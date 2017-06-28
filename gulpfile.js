@@ -61,4 +61,11 @@ gulp.task('models', ['clean'], () => {
 
 });
 
-gulp.task('default', ['models']);
+gulp.task('readme', () => {
+
+	gulp.src('./clayful-php/README.md')
+		.pipe(gulp.dest('./'));
+
+});
+
+gulp.task('default', ['models', 'readme']);
