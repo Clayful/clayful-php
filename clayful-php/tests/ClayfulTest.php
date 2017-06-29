@@ -129,7 +129,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'params'         => array(),
 						'withoutPayload' => false,
 						'args'           => array(
-							array('slug' => 'new-slug') // queryHeaders
+							array('slug' => 'new-slug') // payload
 						)
 					),
 					'result'  => array(
