@@ -53,9 +53,9 @@ class ClayfulRequesterTest extends \PHPUnit_Framework_TestCase {
 			'usesFormData' => false
 		));
 
-		$this->assertEquals($result['status'], 200);
-		$this->assertEquals($result['headers'], array('Content-Language' => 'ko'));
-		$this->assertEquals($result['data'], array(array('_id' => 'abcdefg')));
+		$this->assertEquals($result->status, 200);
+		$this->assertEquals($result->headers, array('Content-Language' => 'ko'));
+		$this->assertEquals($result->data, array(array('_id' => 'abcdefg')));
 
 	}
 
@@ -72,9 +72,9 @@ class ClayfulRequesterTest extends \PHPUnit_Framework_TestCase {
 			'usesFormData' => false
 		));
 
-		$this->assertEquals($result['status'], 204);
-		$this->assertEquals($result['headers'], array('Content-Language' => 'ko'));
-		$this->assertEquals($result['data'], null);
+		$this->assertEquals($result->status, 204);
+		$this->assertEquals($result->headers, array('Content-Language' => 'ko'));
+		$this->assertEquals($result->data, null);
 
 	}
 

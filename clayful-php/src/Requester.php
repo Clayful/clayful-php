@@ -4,6 +4,7 @@ namespace Clayful;
 require 'vendor/autoload.php';
 
 use GuzzleHttp\Client;
+use Clayful\ClayfulResponse;
 use Clayful\ClayfulException;
 
 class Requester {
@@ -68,11 +69,7 @@ class Requester {
 
 		} else {
 
-			return array(
-				'status'  => $status,
-				'data'    => $data,
-				'headers' => $headers
-			);
+			return new ClayfulResponse($status, $data, $headers);
 
 		}
 
