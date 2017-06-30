@@ -36,15 +36,6 @@ gulp.task('models', ['clean'], () => {
 
 	_.forEach(byModel, (apis, className) => {
 
-		apis.forEach(a => {
-
-			a.arguments = a.arguments.map((param, i) => ({
-				name: _.camelCase(param),
-				last: i === (a.arguments.length - 1)
-			}));
-
-		});
-
 		gulp.src('./build/model.mustache')
 			.pipe(mustache({
 				modelName: _.camelCase(className),

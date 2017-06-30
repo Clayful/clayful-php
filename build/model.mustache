@@ -14,7 +14,7 @@ class {{className}} {
 			'methodName'     => '{{method}}',
 			'httpMethod'     => '{{httpMethod}}',
 			'path'           => '{{{path}}}',
-			'params'         => array({{#arguments}}'{{{name}}}',{{^last}} {{/last}}{{/arguments}}),{{#usesFormData}}
+			'params'         => array({{#arguments}}'{{{.}}}', {{/arguments}}),{{#usesFormData}}
 			'usesFormData'   => true,{{/usesFormData}}{{#withoutPayload}}
 			'withoutPayload' => true,{{/withoutPayload}}
 		),
@@ -24,7 +24,7 @@ class {{className}} {
 			'methodName'     => '{{.}}',
 			'httpMethod'     => '{{httpMethod}}',
 			'path'           => '{{{path}}}',
-			'params'         => array({{#arguments}}'{{{name}}}'{{^last}}, {{/last}}{{/arguments}}),{{#usesFormData}}
+			'params'         => array({{#arguments}}'{{{.}}}', {{/arguments}}),{{#usesFormData}}
 			'usesFormData'   => true,{{/usesFormData}}{{#withoutPayload}}
 			'withoutPayload' => true,{{/withoutPayload}}
 		),
