@@ -6,9 +6,10 @@ use Clayful\Clayful;
 class {{className}} {
 
 	public static $name = '{{className}}';
+	public static $path = '{{{pathName}}}';
 
 	public static $apis = array(
-		{{#methods}}
+		{{#apis}}
 		'{{method}}' => array(
 			'modelName'      => '{{className}}',
 			'methodName'     => '{{method}}',
@@ -18,18 +19,7 @@ class {{className}} {
 			'usesFormData'   => true,{{/usesFormData}}{{#withoutPayload}}
 			'withoutPayload' => true,{{/withoutPayload}}
 		),
-		{{#aliases}}
-		'{{.}}' => array(
-			'modelName'      => '{{className}}',
-			'methodName'     => '{{.}}',
-			'httpMethod'     => '{{httpMethod}}',
-			'path'           => '{{{path}}}',
-			'params'         => array({{#arguments}}'{{{.}}}', {{/arguments}}),{{#usesFormData}}
-			'usesFormData'   => true,{{/usesFormData}}{{#withoutPayload}}
-			'withoutPayload' => true,{{/withoutPayload}}
-		),
-		{{/aliases}}
-		{{/methods}}
+		{{/apis}}
 	);
 
 	public static function __callStatic($name, $arguments) {

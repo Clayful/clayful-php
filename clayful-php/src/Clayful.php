@@ -56,6 +56,20 @@ class Clayful {
 
 	}
 
+	public static function normalizeQueryValues($query = array()) {
+
+		$normalize = function($value) {
+
+			// Since `http_build_query` changes boolean to 1, 0,
+			// manually change boolean to 'true', 'false' string.
+			return is_bool($value) ? ($value ? 'true' : 'false') : $value;
+
+		};
+
+		return array_map($normalize, $query);
+
+	}
+
 	public static function extractRequestArguments($options) {
 
 		$result = array(
@@ -89,6 +103,8 @@ class Clayful {
 		$result['query'] = empty($queryHeaders['query']) ?
 							array() :
 							$queryHeaders['query'];
+
+		$result['query'] = self::normalizeQueryValues($result['query']);
 
 		$result['headers'] = self::optionsToHeaders($queryHeaders);
 
@@ -124,5 +140,104 @@ class Clayful {
 
 	}
 
-}
+	public static function formatImageUrl($baseUrl, $options = array()) {
 
+		$query = http_build_query(self::normalizeQueryValues($options));
+
+		if ($query) {
+			$query = '?' . $query;
+		}
+
+		return $baseUrl . $query;
+
+	}
+
+	public static function formatNumber($number, $currency = array()) {
+
+		if (!is_numeric($number)) {
+
+			return '';
+		}
+
+		$number = $number + 0;
+
+		$currency = array_merge(array(
+			'precision' => null,
+			'delimiter' => array()
+		), $currency);
+
+		$currency['delimiter'] = array_merge(array(
+			'thousands' => '',
+			'decimal'   => '.'
+		), $currency['delimiter']);
+
+		$delimiter = $currency['delimiter'];
+
+		if (is_numeric($currency['precision'])) {
+
+			$currency['precision'] = $currency['precision'] + 0;
+
+			$n = pow(10, $currency['precision']);
+
+			$number = round($number * $n) / $n;
+
+		}
+
+		$stringified = explode('.', (string) $number);
+
+		$a = $stringified[0];
+		$b = array_key_exists(1, $stringified) ? $stringified[1] : '';
+
+		$reversed = strrev($a);
+
+		$segments = array();
+
+		$start = 0;
+
+		while (strlen($segment = substr($reversed, $start, 3))) {
+
+			array_unshift($segments, strrev($segment));
+
+			$start += 3;
+
+		}
+
+		if ($currency['precision']) {
+
+			$diff = $currency['precision'] - strlen($b);
+			$diff = $diff < 0 ? 0 : $diff;
+
+			$b .= str_repeat('0', $diff);
+
+		}
+
+		$a = implode($delimiter['thousands'], $segments);
+		$decimal = $b ? $delimiter['decimal'] : '';
+
+		return implode($decimal, array($a, $b));
+
+	}
+
+	public static function formatPrice($number, $currency = array()) {
+
+		$formattedNumber = self::formatNumber($number, $currency);
+
+		if (!$formattedNumber) {
+
+			return '';
+		}
+
+		$currency = array_merge(array(
+			'symbol' => '',
+			'format' => '{price}'
+		), $currency);
+
+		return str_replace(
+			array('{symbol}', '{price}'),
+			array($currency['symbol'], $formattedNumber),
+			$currency['format']
+		);
+
+	}
+
+}

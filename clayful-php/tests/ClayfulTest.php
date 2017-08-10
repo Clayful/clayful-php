@@ -102,7 +102,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'args'           => array(
 							'pid', // param1
 							array( // queryHeaders
-								'query'    => array('raw' => 'true'),
+								'query'    => array('raw' => true),
 								'language' => 'en'
 							)
 						)
@@ -111,7 +111,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'httpMethod'     => $method,
 						'requestUrl'     => '/v1/products/pid',
 						'payload'        => null,
-						'query'          => array('raw' => 'true'),
+						'query'          => array('raw' => 'true'), // stringified boolean
 						'headers'        => array('Accept-Language' => 'en'),
 					)
 				),
@@ -152,7 +152,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 								'slug' => 'new-slug'
 							),
 							array( // queryHeaders
-								'query'    => array('raw' => 'true'),
+								'query'    => array('raw' => true),
 								'language' => 'en'
 							)
 						)
@@ -161,7 +161,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'httpMethod'     => $method,
 						'requestUrl'     => '/v1/products/pid',
 						'payload'        => array('slug' => 'new-slug'),
-						'query'          => array('raw' => 'true'),
+						'query'          => array('raw' => 'true'), // stringified boolean
 						'headers'        => array('Accept-Language' => 'en'),
 					)
 				),
@@ -174,7 +174,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'args'           => array(
 							'rid', // param1
 							array( // queryHeaders
-								'query'    => array('raw' => 'true'),
+								'query'    => array('raw' => true),
 								'language' => 'en'
 							)
 						)
@@ -183,7 +183,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'httpMethod'     => $method,
 						'requestUrl'     => '/v1/me/products/reviews/rid/flag',
 						'payload'        => null,
-						'query'          => array('raw' => 'true'),
+						'query'          => array('raw' => 'true'), // stringified boolean
 						'headers'        => array('Accept-Language' => 'en'),
 					)
 				),
@@ -232,7 +232,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 					'slug' => 'new-slug'
 				),
 				array( // queryHeaders
-					'query'    => array('raw' => 'true'),
+					'query'    => array('raw' => true),
 					'language' => 'en'
 				)
 			)
@@ -244,7 +244,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 			'httpMethod'     => 'PUT',
 			'requestUrl'     => 'https://api.clayful.io/v1/products/pid',
 			'payload'        => array('slug' => 'new-slug'),
-			'query'          => array('raw' => 'true'),
+			'query'          => array('raw' => 'true'), // stringified boolean
 			'headers'        => array(
 				'Accept-Encoding' => 'gzip',
 				'Accept-Language' => 'en',
@@ -294,6 +294,208 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 		Clayful::install('request', 'myCustomPlugin');
 
 		$this->assertEquals(Clayful::$plugins['request'], 'myCustomPlugin');
+
+	}
+
+	public function testFormatImageUrl() {
+
+		$url = 'http://clayful.io';
+
+		$cases = array(
+			array(
+				'out'     => $url
+			),
+			array(
+				'out'     => $url,
+				'options' => array()
+			),
+			array(
+				'out'     => $url . '?width=120',
+				'options' => array('width' => 120)
+			),
+			array(
+				'out'     => $url . '?width=120&height=120',
+				'options' => array('width' => 120, 'height' => 120)
+			)
+		);
+
+		foreach ($cases as $c) {
+
+			if (array_key_exists('options', $c)) {
+				$this->assertEquals(Clayful::formatImageUrl($url, $c['options']), $c['out']);
+			} else {
+				$this->assertEquals(Clayful::formatImageUrl($url), $c['out']);
+			}
+
+		}
+
+	}
+
+	public function testFormatNumber() {
+
+		$cases = array(
+			array(
+				'in'      => null,
+				'out'     => ''
+			),
+			array(
+				'in'      => 10,
+				'out'     => '10'
+			),
+			array(
+				'options' => array(),
+				'in'      => 10,
+				'out'     => '10'
+			),
+			// precision tests
+			array(
+				'in'      => 0.250,
+				'out'     => '0.25'
+			),
+			array(
+				'options' => array('precision' => 0),
+				'in'      => 0,
+				'out'     => '0'
+			),
+			array(
+				'options' => array('precision' => 0),
+				'in'      => 1234567.25,
+				'out'     => '1234567'
+			),
+			array(
+				'options' => array('precision' => 1),
+				'in'      => 1234567.24,
+				'out'     => '1234567.2' // rounded
+			),
+			array(
+				'options' => array('precision' => 1),
+				'in'      => 1234567.25,
+				'out'     => '1234567.3' // rounded
+			),
+			array(
+				'options' => array('precision' => 2),
+				'in'      => 1234567.25,
+				'out'     => '1234567.25'
+			),
+			array(
+				'options' => array('precision' => 3),
+				'in'      => 1234567.25,
+				'out'     => '1234567.250'
+			),
+			array(
+				'options' => array('precision' => 0),
+				'in'      => 1234567,
+				'out'     => '1234567'
+			),
+			array(
+				'options' => array('precision' => 3),
+				'in'      => 1234567,
+				'out'     => '1234567.000'
+			),
+			// delimiter tests
+			array(
+				'options' => array(
+					'precision' => 3
+				),
+				'in'  => 1234567.25,
+				'out' => '1234567.250'
+			),
+			array(
+				'options' => array(
+					'precision' => 3,
+					'delimiter' => array()
+				),
+				'in'  => 1234567.25,
+				'out' => '1234567.250'
+			),
+			array(
+				'options' => array(
+					'precision' => 3,
+					'delimiter' => array(
+						'thousands' => ','
+					)
+				),
+				'in'  => 1234567.25,
+				'out' => '1,234,567.250'
+			),
+			array(
+				'options' => array(
+					'precision' => 3,
+					'delimiter' => array(
+						'thousands' => ' ',
+						'decimal'   => ','
+					)
+				),
+				'in'  => 1234567.25,
+				'out' => '1 234 567,250'
+			),
+		);
+
+		foreach ($cases as $c) {
+
+			if (array_key_exists('options', $c)) {
+				$this->assertEquals(Clayful::formatNumber($c['in'], $c['options']), $c['out']);
+			} else {
+				$this->assertEquals(Clayful::formatNumber($c['in']), $c['out']);
+			}
+
+		}
+
+	}
+
+	public function testFormatPrice() {
+
+		$cases = array(
+			array(
+				'in'      => null,
+				'out'     => ''
+			),
+			array(
+				'in'      => 1234567.25,
+				'out'     => '1234567.25'
+			),
+			array(
+				'options' => array(),
+				'in'      => 1234567.25,
+				'out'     => '1234567.25'
+			),
+			array(
+				'options' => array(
+					'symbol'    => '$',
+					'format'    => '{symbol}{price}',
+					'precision' => 2,
+					'delimiter' => array(
+						'thousands' => ',',
+						'decimal'   => '.'
+					)
+				),
+				'in'      => 1234567.25,
+				'out'     => '$1,234,567.25'
+			),
+			array(
+				'options' => array(
+					'symbol'    => '원',
+					'format'    => '{price}{symbol}',
+					'precision' => 0,
+					'delimiter' => array(
+						'thousands' => ',',
+						'decimal'   => '.'
+					)
+				),
+				'in'      => 1234567.25,
+				'out'     => '1,234,567원'
+			),
+		);
+
+		foreach ($cases as $c) {
+
+			if (array_key_exists('options', $c)) {
+				$this->assertEquals(Clayful::formatPrice($c['in'], $c['options']), $c['out']);
+			} else {
+				$this->assertEquals(Clayful::formatPrice($c['in']), $c['out']);
+			}
+
+		}
 
 	}
 
