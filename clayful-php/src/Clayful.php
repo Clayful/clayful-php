@@ -222,7 +222,7 @@ class Clayful {
 
 		$formattedNumber = self::formatNumber($number, $currency);
 
-		if (!$formattedNumber) {
+		if (!is_string($formattedNumber)) {
 
 			return '';
 		}

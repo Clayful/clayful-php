@@ -451,6 +451,15 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 				'out'     => ''
 			),
 			array(
+				'in'      => 0,
+				'out'     => '0'
+			),
+			array(
+				'options' => array(),
+				'in'      => 0,
+				'out'     => '0'
+			),
+			array(
 				'in'      => 1234567.25,
 				'out'     => '1234567.25'
 			),
