@@ -392,6 +392,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 
 		} catch (ClayfulException $e) {
 
+			$this->assertEquals($e, $error);
 			$this->assertEquals($requestTriggered, true);
 			$this->assertEquals($responseTriggered, true);
 
