@@ -13,6 +13,10 @@ class Clayful {
 	public static $plugins = array(
 		'request' => array('Clayful\Requester', 'request')
 	);
+	public static $listeners = array(
+		'request'  => array(),
+		'response' => array(),
+	);
 
 	public static function optionsToHeaders($o = array()) {
 
@@ -77,6 +81,7 @@ class Clayful {
 			'payload'    => null,
 			'query'      => array(),
 			'headers'    => array(),
+			'meta'       => array(),
 		);
 
 		$rest = array_slice($options['args'], count($options['params']));
@@ -96,17 +101,15 @@ class Clayful {
 
 		$queryHeaders = array_shift($rest); // extract query & header options
 
-		$queryHeaders = empty($queryHeaders) ?
-							array('query' => array()) :
-							$queryHeaders;
+		$queryHeaders = empty($queryHeaders) ? array('query' => array()) : $queryHeaders;
 
-		$result['query'] = empty($queryHeaders['query']) ?
-							array() :
-							$queryHeaders['query'];
+		$result['query'] = empty($queryHeaders['query']) ? array() : $queryHeaders['query'];
 
 		$result['query'] = self::normalizeQueryValues($result['query']);
 
 		$result['headers'] = self::optionsToHeaders($queryHeaders);
+
+		$result['meta'] = array_key_exists('meta', $queryHeaders) ? $queryHeaders['meta'] : array();
 
 		return $result;
 
@@ -120,11 +123,33 @@ class Clayful {
 			'modelName'    => $options['modelName'],
 			'methodName'   => $options['methodName'],
 			'usesFormData' => $options['usesFormData'],
+			'error'        => null,
+			'response'     => null,
 		));
 		$defaultHeaders = array_merge(array(), self::$defaultHeaders); // copy default headers
 		$extracted['headers'] = array_merge($defaultHeaders, $extracted['headers']);
 
-		return call_user_func(self::$plugins['request'], $extracted);
+		self::trigger('request', $extracted);
+
+		try {
+
+			$response = call_user_func(self::$plugins['request'], $extracted);
+
+			$extracted['response'] = $response;
+
+			self::trigger('response', $extracted);
+
+			return $response;
+
+		} catch (ClayfulException $e) {
+
+			// only catches `ClayfulException` to call `response` event listeners
+			$extracted['error'] = $e;
+
+			self::trigger('response', $extracted);
+
+			throw $e;
+		}
 
 	}
 
@@ -137,6 +162,44 @@ class Clayful {
 	public static function install($plugin, $options) {
 
 		self::$plugins[$plugin] = $options;
+
+	}
+
+	public static function on($eventName, $callback) {
+
+		if (!array_key_exists($eventName, self::$listeners)) {
+			return;
+		}
+
+		array_push(self::$listeners[$eventName], $callback);
+
+	}
+
+	public static function off($eventName, $callback) {
+
+		if (!array_key_exists($eventName, self::$listeners)) {
+			return;
+		}
+
+		$key = array_search($callback, self::$listeners[$eventName]);
+
+		if (!is_numeric($key)) {
+			return;
+		}
+
+		array_splice(self::$listeners[$eventName], $key, 1);
+
+	}
+
+	public static function trigger($eventName, &$data) {
+
+		if (!array_key_exists($eventName, self::$listeners)) {
+			return;
+		}
+
+		foreach (self::$listeners[$eventName] as $listener) {
+			$listener($data);
+		}
 
 	}
 

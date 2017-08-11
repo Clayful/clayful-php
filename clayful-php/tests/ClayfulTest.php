@@ -2,26 +2,38 @@
 namespace Clayful\Tests;
 
 use Clayful\Clayful;
+use Clayful\ClayfulException;
 
 class MockRequester {
 
-	public $options = null;
+	public $returnValue = null;
 
-	public function request($options) {
+	public function __construct($returnValue) {
 
-		$this->options = $options;
+		$this->returnValue = $returnValue;
 
 	}
 
-	public function reset() {
+	public function request($options) {
 
-		$this->options = null;
+		if (is_a($this->returnValue, 'Exception')) {
+			throw $this->returnValue;
+		} else {
+			return $this->returnValue;
+		}
 
 	}
 
 }
 
 class ClayfulTest extends \PHPUnit_Framework_TestCase {
+
+	public function setUp() {
+
+		Clayful::$listeners['request'] = array();
+		Clayful::$listeners['response'] = array();
+
+	}
 
 	public function testDefaultOptions() {
 
@@ -91,6 +103,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'payload'        => null,
 						'query'          => array(),
 						'headers'        => array(),
+						'meta'           => array(),
 					)
 				),
 				array(
@@ -103,7 +116,8 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 							'pid', // param1
 							array( // queryHeaders
 								'query'    => array('raw' => true),
-								'language' => 'en'
+								'language' => 'en',
+								'meta'     => array('data' => 'data'),
 							)
 						)
 					),
@@ -113,6 +127,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'payload'        => null,
 						'query'          => array('raw' => 'true'), // stringified boolean
 						'headers'        => array('Accept-Language' => 'en'),
+						'meta'           => array('data' => 'data'),
 					)
 				),
 			);
@@ -138,6 +153,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'payload'        => array('slug' => 'new-slug'),
 						'query'          => array(),
 						'headers'        => array(),
+						'meta'           => array(),
 					)
 				),
 				array(
@@ -153,7 +169,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 							),
 							array( // queryHeaders
 								'query'    => array('raw' => true),
-								'language' => 'en'
+								'language' => 'en',
 							)
 						)
 					),
@@ -163,6 +179,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'payload'        => array('slug' => 'new-slug'),
 						'query'          => array('raw' => 'true'), // stringified boolean
 						'headers'        => array('Accept-Language' => 'en'),
+						'meta'           => array(),
 					)
 				),
 				array(
@@ -175,7 +192,8 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 							'rid', // param1
 							array( // queryHeaders
 								'query'    => array('raw' => true),
-								'language' => 'en'
+								'language' => 'en',
+								'meta'     => array('data' => 'data'),
 							)
 						)
 					),
@@ -185,6 +203,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 						'payload'        => null,
 						'query'          => array('raw' => 'true'), // stringified boolean
 						'headers'        => array('Accept-Language' => 'en'),
+						'meta'           => array('data' => 'data'),
 					)
 				),
 			);
@@ -204,21 +223,67 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 
 	}
 
-	public function testCallAPI() {
+	public function testCallAPIWithoutError() {
 
-		// Check original default headers
-		$this->assertEquals(Clayful::$defaultHeaders, array(
-			'Accept-Encoding' => 'gzip',
-			'X-Clayful-SDK'   => 'clayful-php'
-		));
+		$requestTriggered = false;
+		$responseTriggered = false;
 
 		// Make a mock request plugin
-		$mockRequester = new MockRequester();
+		$mockRequester = new MockRequester(array('response' => true));
 
 		// Install the plugin
 		Clayful::install('request', array($mockRequester, 'request'));
 
-		Clayful::callAPI(array(
+		Clayful::on('request', function(&$detail) use (&$requestTriggered) {
+			$this->assertEquals($detail, array(
+				'modelName'      => 'Product',
+				'methodName'     => 'update',
+				'httpMethod'     => 'PUT',
+				'requestUrl'     => 'https://api.clayful.io/v1/products/pid',
+				'payload'        => array('slug' => 'new-slug'),
+				'query'          => array('raw' => 'true'), // stringified boolean
+				'headers'        => array(
+					'Accept-Encoding' => 'gzip',
+					'Accept-Language' => 'en',
+					'X-Clayful-SDK'   => 'clayful-php'
+				),
+				'usesFormData' => false,
+				'meta'         => array('data' => 'data'),
+				'error'        => null,
+				'response'     => null, // no response yet
+			));
+			$requestTriggered = true;
+		});
+
+		Clayful::on('request', function(&$detail) {
+			$detail['meta']['requestCalled'] = true; // directly modify $detail
+		});
+
+		Clayful::on('response', function(&$detail) use (&$responseTriggered) {
+			$this->assertEquals($detail, array(
+				'modelName'      => 'Product',
+				'methodName'     => 'update',
+				'httpMethod'     => 'PUT',
+				'requestUrl'     => 'https://api.clayful.io/v1/products/pid',
+				'payload'        => array('slug' => 'new-slug'),
+				'query'          => array('raw' => 'true'), // stringified boolean
+				'headers'        => array(
+					'Accept-Encoding' => 'gzip',
+					'Accept-Language' => 'en',
+					'X-Clayful-SDK'   => 'clayful-php'
+				),
+				'usesFormData' => false,
+				'meta'         => array(
+					'data'          => 'data',
+					'requestCalled' => true, // added from 'request' event listener
+				),
+				'error'        => null,
+				'response'     => array('response' => true), // response populated
+			));
+			$responseTriggered = true;
+		});
+
+		$response = Clayful::callAPI(array(
 			'modelName'      => 'Product',
 			'methodName'     => 'update',
 			'httpMethod'     => 'PUT',
@@ -233,31 +298,153 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 				),
 				array( // queryHeaders
 					'query'    => array('raw' => true),
-					'language' => 'en'
+					'language' => 'en',
+					'meta'     => array('data' => 'data')
 				)
 			)
 		));
 
-		$this->assertEquals($mockRequester->options, array(
-			'modelName'      => 'Product',
-			'methodName'     => 'update',
-			'httpMethod'     => 'PUT',
-			'requestUrl'     => 'https://api.clayful.io/v1/products/pid',
-			'payload'        => array('slug' => 'new-slug'),
-			'query'          => array('raw' => 'true'), // stringified boolean
-			'headers'        => array(
-				'Accept-Encoding' => 'gzip',
-				'Accept-Language' => 'en',
-				'X-Clayful-SDK'   => 'clayful-php'
-			),
-			'usesFormData'   => false,
-		));
+		$this->assertEquals($response, array('response' => true));
+		$this->assertEquals($requestTriggered, true);
+		$this->assertEquals($responseTriggered, true);
 
-		// Check if the default headers are mutated
-		$this->assertEquals(Clayful::$defaultHeaders, array(
-			'Accept-Encoding' => 'gzip',
-			'X-Clayful-SDK'   => 'clayful-php'
-		));
+	}
+
+	public function testCallAPIWithClayfulException() {
+
+		$requestTriggered = false;
+		$responseTriggered = false;
+
+		$error = new ClayfulException();
+
+		// Throws ClayfulException
+		$mockRequester = new MockRequester($error);
+
+		// Install the plugin
+		Clayful::install('request', array($mockRequester, 'request'));
+
+		Clayful::on('request', function(&$detail) use (&$requestTriggered) {
+			$this->assertEquals($detail, array(
+				'modelName'      => 'Product',
+				'methodName'     => 'update',
+				'httpMethod'     => 'PUT',
+				'requestUrl'     => 'https://api.clayful.io/v1/products/pid',
+				'payload'        => array('slug' => 'new-slug'),
+				'query'          => array('raw' => 'true'), // stringified boolean
+				'headers'        => array(
+					'Accept-Encoding' => 'gzip',
+					'Accept-Language' => 'en',
+					'X-Clayful-SDK'   => 'clayful-php'
+				),
+				'usesFormData' => false,
+				'meta'         => array(), // default meta
+				'error'        => null, // no error yet
+				'response'     => null,
+			));
+			$requestTriggered = true;
+		});
+
+		Clayful::on('response', function(&$detail) use (&$responseTriggered, &$error) {
+			$this->assertEquals($detail, array(
+				'modelName'      => 'Product',
+				'methodName'     => 'update',
+				'httpMethod'     => 'PUT',
+				'requestUrl'     => 'https://api.clayful.io/v1/products/pid',
+				'payload'        => array('slug' => 'new-slug'),
+				'query'          => array('raw' => 'true'), // stringified boolean
+				'headers'        => array(
+					'Accept-Encoding' => 'gzip',
+					'Accept-Language' => 'en',
+					'X-Clayful-SDK'   => 'clayful-php'
+				),
+				'usesFormData' => false,
+				'meta'         => array(),
+				'error'        => $error,
+				'response'     => null,
+			));
+			$responseTriggered = true;
+		});
+
+		try {
+
+			$response = Clayful::callAPI(array(
+				'modelName'      => 'Product',
+				'methodName'     => 'update',
+				'httpMethod'     => 'PUT',
+				'path'           => '/v1/products/{productId}',
+				'params'         => array('productId'),
+				'usesFormData'   => false,
+				'withoutPayload' => false,
+				'args'           => array(
+					'pid', // param1
+					array( // payload
+						'slug' => 'new-slug'
+					),
+					array( // queryHeaders
+						'query'    => array('raw' => true),
+						'language' => 'en',
+					)
+				)
+			));
+
+			// Just to check `ClayfulException` is thrown
+			$this->assertEquals(1, 2);
+
+		} catch (ClayfulException $e) {
+
+			$this->assertEquals($requestTriggered, true);
+			$this->assertEquals($responseTriggered, true);
+
+		}
+
+	}
+
+	public function testCallAPIWithOtherException() {
+
+		$requestTriggered = false;
+		$responseTriggered = false;
+
+		// Throws regular Exception
+		$mockRequester = new MockRequester(new \Exception());
+
+		// Install the plugin
+		Clayful::install('request', array($mockRequester, 'request'));
+
+		Clayful::on('request', function(&$detail) use (&$requestTriggered) {
+			$requestTriggered = true;
+		});
+
+		Clayful::on('response', function(&$detail) use (&$responseTriggered) {
+			$responseTriggered = true;
+		});
+
+		try {
+
+			$response = Clayful::callAPI(array(
+				'modelName'      => 'Product',
+				'methodName'     => 'update',
+				'httpMethod'     => 'PUT',
+				'path'           => '/v1/products/{productId}',
+				'params'         => array('productId'),
+				'usesFormData'   => false,
+				'withoutPayload' => false,
+				'args'           => array(
+					'pid',
+					array(
+						'slug' => 'new-slug'
+					),
+				)
+			));
+
+			// Just to check `Exception` is thrown
+			$this->assertEquals(1, 2);
+
+		} catch (\Exception $e) {
+
+			$this->assertEquals($requestTriggered, true);
+			$this->assertEquals($responseTriggered, false); // shouldn't be called
+
+		}
 
 	}
 
@@ -294,6 +481,53 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 		Clayful::install('request', 'myCustomPlugin');
 
 		$this->assertEquals(Clayful::$plugins['request'], 'myCustomPlugin');
+
+	}
+
+	public function testEventListeners() {
+
+		$requestTriggered = false;
+		$responseTriggered = false;
+
+		$this->assertEquals(count(Clayful::$listeners['request']), 0);
+		$this->assertEquals(count(Clayful::$listeners['response']), 0);
+
+		$callback = function() {};
+
+		// Should add event listeners
+		Clayful::on('request', $callback);
+		Clayful::on('response', $callback);
+
+		$this->assertEquals(count(Clayful::$listeners['request']), 1);
+		$this->assertEquals(count(Clayful::$listeners['response']), 1);
+		$this->assertEquals(Clayful::$listeners['request'][0], $callback);
+		$this->assertEquals(Clayful::$listeners['response'][0], $callback);
+
+		// Should remove event listeners
+		Clayful::off('request', $callback);
+		Clayful::off('response', $callback);
+
+		$this->assertEquals(count(Clayful::$listeners['request']), 0);
+		$this->assertEquals(count(Clayful::$listeners['response']), 0);
+
+		Clayful::on('request', function($data) use (&$requestTriggered) {
+			$requestTriggered = true;
+			$this->assertEquals($data, 1);
+		});
+		Clayful::on('response', function($data) use (&$responseTriggered) {
+			$responseTriggered = true;
+			$this->assertEquals($data, 2);
+		});
+
+		// Should trigger event listeners
+		$d1 = 1;
+		$d2 = 2;
+
+		Clayful::trigger('request', $d1);
+		Clayful::trigger('response', $d2);
+
+		$this->assertEquals($requestTriggered, true);
+		$this->assertEquals($responseTriggered, true);
 
 	}
 
