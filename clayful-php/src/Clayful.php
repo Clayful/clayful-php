@@ -39,7 +39,7 @@ class Clayful {
 		}
 
 		if (array_key_exists('customer', $o)) {
-			$headers['X-Clayful-Customer-Authorization'] = 'Bearer ' . $o['customer'];
+			$headers['X-Clayful-Customer'] = $o['customer'];
 		}
 
 		if (array_key_exists('errorLanguage', $o)) {
@@ -66,7 +66,7 @@ class Clayful {
 
 			// Since `http_build_query` changes boolean to 1, 0,
 			// manually change boolean to 'true', 'false' string.
-			return is_bool($value) ? ($value ? 'true' : 'false') : $value;
+			return rawurlencode(is_bool($value) ? ($value ? 'true' : 'false') : $value);
 
 		};
 

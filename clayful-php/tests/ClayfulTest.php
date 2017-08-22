@@ -67,13 +67,13 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 				'X-Extra' => 'Extra'
 			)
  		)), array(
-			'Accept-Language'                  => 'ko',
-			'Accept-Currency'                  => 'KRW',
-			'Accept-Time-Zone'                 => 'Asia/Seoul',
-			'Authorization'                    => 'Bearer client_token',
-			'X-Clayful-Customer-Authorization' => 'Bearer customer_token',
-			'X-Clayful-Error-Language'         => 'en',
-			'X-Extra'                          => 'Extra'
+			'Accept-Language'          => 'ko',
+			'Accept-Currency'          => 'KRW',
+			'Accept-Time-Zone'         => 'Asia/Seoul',
+			'Authorization'            => 'Bearer client_token',
+			'X-Clayful-Customer'       => 'customer_token',
+			'X-Clayful-Error-Language' => 'en',
+			'X-Extra'                  => 'Extra'
 		));
 
 	}
@@ -464,15 +464,15 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
  		));
 
 		$this->assertEquals(Clayful::$defaultHeaders, array(
-			'Accept-Encoding'                  => 'gzip',
-			'Accept-Language'                  => 'ko',
-			'Accept-Currency'                  => 'KRW',
-			'Accept-Time-Zone'                 => 'Asia/Seoul',
-			'Authorization'                    => 'Bearer client_token',
-			'X-Clayful-SDK'                    => 'clayful-php',
-			'X-Clayful-Customer-Authorization' => 'Bearer customer_token',
-			'X-Clayful-Error-Language'         => 'en',
-			'X-Extra'                          => 'Extra'
+			'Accept-Encoding'          => 'gzip',
+			'Accept-Language'          => 'ko',
+			'Accept-Currency'          => 'KRW',
+			'Accept-Time-Zone'         => 'Asia/Seoul',
+			'Authorization'            => 'Bearer client_token',
+			'X-Clayful-SDK'            => 'clayful-php',
+			'X-Clayful-Customer'       => 'customer_token',
+			'X-Clayful-Error-Language' => 'en',
+			'X-Extra'                  => 'Extra'
 		));
 
 	}
