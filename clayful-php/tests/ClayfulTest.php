@@ -84,6 +84,24 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 
 	}
 
+	public function testNormalizeQueryValues() {
+
+		$result = Clayful::normalizeQueryValues(array(
+			'string'  => 'string',
+			'number'  => 100,
+			'boolean' => true,
+			'special' => ' +&',
+		));
+
+		$this->assertEquals($result, array(
+			'string'  => 'string',
+			'number'  => '100',
+			'boolean' => 'true',
+			'special' => '%20%2B%26',
+		));
+
+	}
+
 	public function testExtractAPIArguments() {
 
 		function buildGetDeleteTestCases($method) {
