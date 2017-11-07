@@ -1,5 +1,5 @@
 {
-    "name": "clayful/clayful",
+    "name": "clayful/clayful-php",
     "description": "PHP SDK for Clayful API",
     "version": "0.0.0",
     "type": "library",
