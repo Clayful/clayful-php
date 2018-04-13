@@ -8,7 +8,8 @@ class Clayful {
 	public static $baseUrl = 'https://api.clayful.io';
 	public static $defaultHeaders = array(
 		'Accept-Encoding' => 'gzip',
-		'X-Clayful-SDK'   => 'clayful-php'
+		'User-Agent'      => 'clayful-php',
+		'Clayful-SDK'     => 'clayful-php',
 	);
 	public static $plugins = array(
 		'request' => array('Clayful\Requester', 'request')
@@ -39,11 +40,11 @@ class Clayful {
 		}
 
 		if (array_key_exists('customer', $o)) {
-			$headers['X-Clayful-Customer'] = $o['customer'];
+			$headers['Authorization-Customer'] = $o['customer'];
 		}
 
-		if (array_key_exists('errorLanguage', $o)) {
-			$headers['X-Clayful-Error-Language'] = $o['errorLanguage'];
+		if (array_key_exists('debugLanguage', $o)) {
+			$headers['Accept-Debug-Language'] = $o['debugLanguage'];
 		}
 
 		if (array_key_exists('headers', $o)) {

@@ -40,7 +40,8 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(Clayful::$baseUrl, 'https://api.clayful.io');
 		$this->assertEquals(Clayful::$defaultHeaders, array(
 			'Accept-Encoding' => 'gzip',
-			'X-Clayful-SDK'   => 'clayful-php'
+			'User-Agent'      => 'clayful-php',
+			'Clayful-SDK'     => 'clayful-php'
 		));
 		$this->assertEquals(Clayful::$plugins, array(
 			'request' => array('Clayful\Requester', 'request')
@@ -62,7 +63,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 			'timeZone'      => 'Asia/Seoul',
 			'client'        => 'client_token',
 			'customer'      => 'customer_token',
-			'errorLanguage' => 'en',
+			'debugLanguage' => 'en',
 			'headers'       => array(
 				'X-Extra' => 'Extra'
 			)
@@ -71,8 +72,8 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 			'Accept-Currency'          => 'KRW',
 			'Accept-Time-Zone'         => 'Asia/Seoul',
 			'Authorization'            => 'Bearer client_token',
-			'X-Clayful-Customer'       => 'customer_token',
-			'X-Clayful-Error-Language' => 'en',
+			'Authorization-Customer'   => 'customer_token',
+			'Accept-Debug-Language'    => 'en',
 			'X-Extra'                  => 'Extra'
 		));
 
@@ -262,8 +263,9 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 				'query'          => array('raw' => 'true'), // stringified boolean
 				'headers'        => array(
 					'Accept-Encoding' => 'gzip',
+					'User-Agent'      => 'clayful-php',
 					'Accept-Language' => 'en',
-					'X-Clayful-SDK'   => 'clayful-php'
+					'Clayful-SDK'     => 'clayful-php'
 				),
 				'usesFormData' => false,
 				'meta'         => array('data' => 'data'),
@@ -287,8 +289,9 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 				'query'          => array('raw' => 'true'), // stringified boolean
 				'headers'        => array(
 					'Accept-Encoding' => 'gzip',
+					'User-Agent'      => 'clayful-php',
 					'Accept-Language' => 'en',
-					'X-Clayful-SDK'   => 'clayful-php'
+					'Clayful-SDK'     => 'clayful-php'
 				),
 				'usesFormData' => false,
 				'meta'         => array(
@@ -351,8 +354,9 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 				'query'          => array('raw' => 'true'), // stringified boolean
 				'headers'        => array(
 					'Accept-Encoding' => 'gzip',
+					'User-Agent'      => 'clayful-php',
 					'Accept-Language' => 'en',
-					'X-Clayful-SDK'   => 'clayful-php'
+					'Clayful-SDK'     => 'clayful-php'
 				),
 				'usesFormData' => false,
 				'meta'         => array(), // default meta
@@ -372,8 +376,9 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 				'query'          => array('raw' => 'true'), // stringified boolean
 				'headers'        => array(
 					'Accept-Encoding' => 'gzip',
+					'User-Agent'      => 'clayful-php',
 					'Accept-Language' => 'en',
-					'X-Clayful-SDK'   => 'clayful-php'
+					'Clayful-SDK'     => 'clayful-php'
 				),
 				'usesFormData' => false,
 				'meta'         => array(),
@@ -475,7 +480,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 			'timeZone'      => 'Asia/Seoul',
 			'client'        => 'client_token',
 			'customer'      => 'customer_token',
-			'errorLanguage' => 'en',
+			'debugLanguage' => 'en',
 			'headers'       => array(
 				'X-Extra' => 'Extra'
 			)
@@ -487,9 +492,10 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 			'Accept-Currency'          => 'KRW',
 			'Accept-Time-Zone'         => 'Asia/Seoul',
 			'Authorization'            => 'Bearer client_token',
-			'X-Clayful-SDK'            => 'clayful-php',
-			'X-Clayful-Customer'       => 'customer_token',
-			'X-Clayful-Error-Language' => 'en',
+			'Authorization-Customer'   => 'customer_token',
+			'User-Agent'               => 'clayful-php',
+			'Clayful-SDK'              => 'clayful-php',
+			'Accept-Debug-Language'    => 'en',
 			'X-Extra'                  => 'Extra'
 		));
 
