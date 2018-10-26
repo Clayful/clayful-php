@@ -9,13 +9,6 @@ class Image {
 	public static $path = 'images';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'Image',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/images',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'Image',
 			'methodName'     => 'list',
@@ -37,6 +30,27 @@ class Image {
 			'path'           => '/v1/images/{imageId}',
 			'params'         => array('imageId', ),
 		),
+		'listForMe' => array(
+			'modelName'      => 'Image',
+			'methodName'     => 'listForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/images',
+			'params'         => array(),
+		),
+		'countForMe' => array(
+			'modelName'      => 'Image',
+			'methodName'     => 'countForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/images/count',
+			'params'         => array(),
+		),
+		'getForMe' => array(
+			'modelName'      => 'Image',
+			'methodName'     => 'getForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/images/{imageId}',
+			'params'         => array('imageId', ),
+		),
 		'create' => array(
 			'modelName'      => 'Image',
 			'methodName'     => 'create',
@@ -45,12 +59,20 @@ class Image {
 			'params'         => array(),
 			'usesFormData'   => true,
 		),
-		'addToReviewAsMe' => array(
+		'createForMe' => array(
 			'modelName'      => 'Image',
-			'methodName'     => 'addToReviewAsMe',
+			'methodName'     => 'createForMe',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/me/products/reviews/{reviewId}/images',
-			'params'         => array('reviewId', ),
+			'path'           => '/v1/me/images',
+			'params'         => array(),
+			'usesFormData'   => true,
+		),
+		'createAsCustomer' => array(
+			'modelName'      => 'Image',
+			'methodName'     => 'createAsCustomer',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/customers/{customerId}/images',
+			'params'         => array('customerId', ),
 			'usesFormData'   => true,
 		),
 		'update' => array(
@@ -61,6 +83,22 @@ class Image {
 			'params'         => array('imageId', ),
 			'usesFormData'   => true,
 		),
+		'updateForMe' => array(
+			'modelName'      => 'Image',
+			'methodName'     => 'updateForMe',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/me/images/{imageId}',
+			'params'         => array('imageId', ),
+			'usesFormData'   => true,
+		),
+		'updateAsCustomer' => array(
+			'modelName'      => 'Image',
+			'methodName'     => 'updateAsCustomer',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/customers/{customerId}/images/{imageId}',
+			'params'         => array('customerId', 'imageId', ),
+			'usesFormData'   => true,
+		),
 		'delete' => array(
 			'modelName'      => 'Image',
 			'methodName'     => 'delete',
@@ -68,12 +106,19 @@ class Image {
 			'path'           => '/v1/images/{imageId}',
 			'params'         => array('imageId', ),
 		),
-		'deleteFromReviewAsMe' => array(
+		'deleteForMe' => array(
 			'modelName'      => 'Image',
-			'methodName'     => 'deleteFromReviewAsMe',
+			'methodName'     => 'deleteForMe',
 			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/me/products/reviews/{reviewId}/images/{imageId}',
-			'params'         => array('reviewId', 'imageId', ),
+			'path'           => '/v1/me/images/{imageId}',
+			'params'         => array('imageId', ),
+		),
+		'deleteAsCustomer' => array(
+			'modelName'      => 'Image',
+			'methodName'     => 'deleteAsCustomer',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/customers/{customerId}/images/{imageId}',
+			'params'         => array('customerId', 'imageId', ),
 		),
 	);
 

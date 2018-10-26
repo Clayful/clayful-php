@@ -9,9 +9,9 @@ class Cart {
 	public static $path = '';
 
 	public static $apis = array(
-		'countItemsAsMe' => array(
+		'countItemsForMe' => array(
 			'modelName'      => 'Cart',
-			'methodName'     => 'countItemsAsMe',
+			'methodName'     => 'countItemsForMe',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/me/cart/items/count',
 			'params'         => array(),
@@ -23,25 +23,18 @@ class Cart {
 			'path'           => '/v1/customers/{customerId}/cart/items/count',
 			'params'         => array('customerId', ),
 		),
+		'getForMe' => array(
+			'modelName'      => 'Cart',
+			'methodName'     => 'getForMe',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/me/cart',
+			'params'         => array(),
+		),
 		'getAsNonRegistered' => array(
 			'modelName'      => 'Cart',
 			'methodName'     => 'getAsNonRegistered',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/cart',
-			'params'         => array(),
-		),
-		'checkoutAsNonRegistered' => array(
-			'modelName'      => 'Cart',
-			'methodName'     => 'checkoutAsNonRegistered',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/cart/checkout',
-			'params'         => array(),
-		),
-		'getAsMe' => array(
-			'modelName'      => 'Cart',
-			'methodName'     => 'getAsMe',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/me/cart',
+			'path'           => '/v1/customers/non-registered/cart',
 			'params'         => array(),
 		),
 		'get' => array(
@@ -51,18 +44,18 @@ class Cart {
 			'path'           => '/v1/customers/{customerId}/cart',
 			'params'         => array('customerId', ),
 		),
-		'checkoutAsMe' => array(
+		'addItemForMe' => array(
 			'modelName'      => 'Cart',
-			'methodName'     => 'checkoutAsMe',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/me/cart/checkout',
-			'params'         => array(),
-		),
-		'addItemAsMe' => array(
-			'modelName'      => 'Cart',
-			'methodName'     => 'addItemAsMe',
+			'methodName'     => 'addItemForMe',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/me/cart/items',
+			'params'         => array(),
+		),
+		'getAsNonRegisteredForMe' => array(
+			'modelName'      => 'Cart',
+			'methodName'     => 'getAsNonRegisteredForMe',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/me/non-registered/cart',
 			'params'         => array(),
 		),
 		'addItem' => array(
@@ -72,16 +65,37 @@ class Cart {
 			'path'           => '/v1/customers/{customerId}/cart/items',
 			'params'         => array('customerId', ),
 		),
+		'checkoutForMe' => array(
+			'modelName'      => 'Cart',
+			'methodName'     => 'checkoutForMe',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/me/cart/checkout/{type}',
+			'params'         => array('type', ),
+		),
+		'checkoutAsNonRegistered' => array(
+			'modelName'      => 'Cart',
+			'methodName'     => 'checkoutAsNonRegistered',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/customers/non-registered/cart/checkout/{type}',
+			'params'         => array('type', ),
+		),
 		'checkout' => array(
 			'modelName'      => 'Cart',
 			'methodName'     => 'checkout',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/customers/{customerId}/cart/checkout',
-			'params'         => array('customerId', ),
+			'path'           => '/v1/customers/{customerId}/cart/checkout/{type}',
+			'params'         => array('customerId', 'type', ),
 		),
-		'updateItemAsMe' => array(
+		'checkoutAsNonRegisteredForMe' => array(
 			'modelName'      => 'Cart',
-			'methodName'     => 'updateItemAsMe',
+			'methodName'     => 'checkoutAsNonRegisteredForMe',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/me/non-registered/cart/checkout/{type}',
+			'params'         => array('type', ),
+		),
+		'updateItemForMe' => array(
+			'modelName'      => 'Cart',
+			'methodName'     => 'updateItemForMe',
 			'httpMethod'     => 'PUT',
 			'path'           => '/v1/me/cart/items/{itemId}',
 			'params'         => array('itemId', ),
@@ -93,9 +107,9 @@ class Cart {
 			'path'           => '/v1/customers/{customerId}/cart/items/{itemId}',
 			'params'         => array('customerId', 'itemId', ),
 		),
-		'emptyAsMe' => array(
+		'emptyForMe' => array(
 			'modelName'      => 'Cart',
-			'methodName'     => 'emptyAsMe',
+			'methodName'     => 'emptyForMe',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/me/cart/items',
 			'params'         => array(),
@@ -107,9 +121,9 @@ class Cart {
 			'path'           => '/v1/customers/{customerId}/cart/items',
 			'params'         => array('customerId', ),
 		),
-		'deleteItemAsMe' => array(
+		'deleteItemForMe' => array(
 			'modelName'      => 'Cart',
-			'methodName'     => 'deleteItemAsMe',
+			'methodName'     => 'deleteItemForMe',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/me/cart/items/{itemId}',
 			'params'         => array('itemId', ),

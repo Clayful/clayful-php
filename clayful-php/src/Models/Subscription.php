@@ -6,21 +6,21 @@ use Clayful\Clayful;
 class Subscription {
 
 	public static $name = 'Subscription';
-	public static $path = '';
+	public static $path = 'subscriptions';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'Subscription',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/subscriptions',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'Subscription',
 			'methodName'     => 'list',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/subscriptions',
+			'params'         => array(),
+		),
+		'listForMe' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'listForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/subscriptions',
 			'params'         => array(),
 		),
 		'count' => array(
@@ -37,41 +37,133 @@ class Subscription {
 			'path'           => '/v1/subscriptions/{subscriptionId}',
 			'params'         => array('subscriptionId', ),
 		),
-		'queryByCustomer' => array(
+		'countForMe' => array(
 			'modelName'      => 'Subscription',
-			'methodName'     => 'queryByCustomer',
+			'methodName'     => 'countForMe',
 			'httpMethod'     => 'GET',
-			'path'           => '/v1/customers/{customerId}/subscriptions',
-			'params'         => array('customerId', ),
+			'path'           => '/v1/me/subscriptions/count',
+			'params'         => array(),
 		),
-		'listByCustomer' => array(
+		'getForMe' => array(
 			'modelName'      => 'Subscription',
-			'methodName'     => 'listByCustomer',
+			'methodName'     => 'getForMe',
 			'httpMethod'     => 'GET',
-			'path'           => '/v1/customers/{customerId}/subscriptions',
-			'params'         => array('customerId', ),
+			'path'           => '/v1/me/subscriptions/{subscriptionId}',
+			'params'         => array('subscriptionId', ),
 		),
-		'reject' => array(
+		'listInventoryOperations' => array(
 			'modelName'      => 'Subscription',
-			'methodName'     => 'reject',
+			'methodName'     => 'listInventoryOperations',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/subscriptions/{subscriptionId}/inventory/operations',
+			'params'         => array('subscriptionId', ),
+		),
+		'syncInventory' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'syncInventory',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/subscriptions/{subscriptionId}/reject',
+			'path'           => '/v1/subscriptions/{subscriptionId}/synced',
+			'params'         => array('subscriptionId', ),
+			'withoutPayload' => true,
+		),
+		'authenticate' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'authenticate',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/subscriptions/{subscriptionId}/auth',
 			'params'         => array('subscriptionId', ),
 		),
 		'cancel' => array(
 			'modelName'      => 'Subscription',
 			'methodName'     => 'cancel',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/subscriptions/{subscriptionId}/cancel',
+			'path'           => '/v1/subscriptions/{subscriptionId}/cancellation',
 			'params'         => array('subscriptionId', ),
 		),
-		'start' => array(
+		'markAsDone' => array(
 			'modelName'      => 'Subscription',
-			'methodName'     => 'start',
+			'methodName'     => 'markAsDone',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/subscriptions/{subscriptionId}/start',
+			'path'           => '/v1/subscriptions/{subscriptionId}/done',
 			'params'         => array('subscriptionId', ),
 			'withoutPayload' => true,
+		),
+		'schedule' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'schedule',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/subscriptions/{subscriptionId}/scheduled',
+			'params'         => array('subscriptionId', ),
+		),
+		'scheduleForMe' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'scheduleForMe',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/me/subscriptions/{subscriptionId}/scheduled',
+			'params'         => array('subscriptionId', ),
+		),
+		'cancelForMe' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'cancelForMe',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/me/subscriptions/{subscriptionId}/cancellation',
+			'params'         => array('subscriptionId', ),
+		),
+		'fulfillSchedule' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'fulfillSchedule',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/subscriptions/{subscriptionId}/schedules/orders',
+			'params'         => array('subscriptionId', ),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/subscriptions/{subscriptionId}/meta/{field}/pull',
+			'params'         => array('subscriptionId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/subscriptions/{subscriptionId}/meta/{field}/inc',
+			'params'         => array('subscriptionId', 'field', ),
+		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/subscriptions/{subscriptionId}/meta/{field}/push',
+			'params'         => array('subscriptionId', 'field', ),
+		),
+		'update' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'update',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/subscriptions/{subscriptionId}',
+			'params'         => array('subscriptionId', ),
+		),
+		'updateForMe' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'updateForMe',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/me/subscriptions/{subscriptionId}',
+			'params'         => array('subscriptionId', ),
+		),
+		'updateCancellation' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'updateCancellation',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/subscriptions/{subscriptionId}/cancellation',
+			'params'         => array('subscriptionId', ),
+		),
+		'updateCancellationForMe' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'updateCancellationForMe',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/me/subscriptions/{subscriptionId}/cancellation',
+			'params'         => array('subscriptionId', ),
 		),
 		'delete' => array(
 			'modelName'      => 'Subscription',
@@ -79,6 +171,27 @@ class Subscription {
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/subscriptions/{subscriptionId}',
 			'params'         => array('subscriptionId', ),
+		),
+		'markAsUndone' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'markAsUndone',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/subscriptions/{subscriptionId}/done',
+			'params'         => array('subscriptionId', ),
+		),
+		'deleteMetafield' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'deleteMetafield',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/subscriptions/{subscriptionId}/meta/{field}',
+			'params'         => array('subscriptionId', 'field', ),
+		),
+		'deleteInventoryOperation' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'deleteInventoryOperation',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/subscriptions/{subscriptionId}/inventory/operations/{operationId}',
+			'params'         => array('subscriptionId', 'operationId', ),
 		),
 	);
 

@@ -9,13 +9,6 @@ class OrderTag {
 	public static $path = 'orders/tags';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'OrderTag',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/orders/tags',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'OrderTag',
 			'methodName'     => 'list',

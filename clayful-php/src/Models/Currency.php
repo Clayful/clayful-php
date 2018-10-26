@@ -9,13 +9,6 @@ class Currency {
 	public static $path = 'currencies';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'Currency',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/currencies',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'Currency',
 			'methodName'     => 'list',

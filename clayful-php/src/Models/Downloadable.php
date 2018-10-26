@@ -9,13 +9,6 @@ class Downloadable {
 	public static $path = 'downloadables';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'Downloadable',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/downloadables',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'Downloadable',
 			'methodName'     => 'list',

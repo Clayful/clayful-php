@@ -16,11 +16,11 @@ class Store {
 			'path'           => '/v1/store',
 			'params'         => array(),
 		),
-		'pushToMetafield' => array(
+		'pullFromMetafield' => array(
 			'modelName'      => 'Store',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/store/meta/{field}/push',
+			'path'           => '/v1/store/meta/{field}/pull',
 			'params'         => array('field', ),
 		),
 		'increaseMetafield' => array(
@@ -30,11 +30,11 @@ class Store {
 			'path'           => '/v1/store/meta/{field}/inc',
 			'params'         => array('field', ),
 		),
-		'pullFromMetafield' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'Store',
-			'methodName'     => 'pullFromMetafield',
+			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/store/meta/{field}/pull',
+			'path'           => '/v1/store/meta/{field}/push',
 			'params'         => array('field', ),
 		),
 		'deleteMetafield' => array(

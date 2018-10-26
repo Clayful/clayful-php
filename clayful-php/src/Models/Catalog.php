@@ -3,60 +3,60 @@ namespace Clayful;
 
 use Clayful\Clayful;
 
-class Group {
+class Catalog {
 
-	public static $name = 'Group';
-	public static $path = 'groups';
+	public static $name = 'Catalog';
+	public static $path = 'catalogs';
 
 	public static $apis = array(
 		'list' => array(
-			'modelName'      => 'Group',
+			'modelName'      => 'Catalog',
 			'methodName'     => 'list',
 			'httpMethod'     => 'GET',
-			'path'           => '/v1/groups',
+			'path'           => '/v1/catalogs',
 			'params'         => array(),
 		),
 		'count' => array(
-			'modelName'      => 'Group',
+			'modelName'      => 'Catalog',
 			'methodName'     => 'count',
 			'httpMethod'     => 'GET',
-			'path'           => '/v1/groups/count',
+			'path'           => '/v1/catalogs/count',
 			'params'         => array(),
 		),
 		'get' => array(
-			'modelName'      => 'Group',
+			'modelName'      => 'Catalog',
 			'methodName'     => 'get',
 			'httpMethod'     => 'GET',
-			'path'           => '/v1/groups/{groupId}',
-			'params'         => array('groupId', ),
-		),
-		'increaseMetafield' => array(
-			'modelName'      => 'Group',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/groups/{groupId}/meta/{field}/inc',
-			'params'         => array('groupId', 'field', ),
+			'path'           => '/v1/catalogs/{catalogId}',
+			'params'         => array('catalogId', ),
 		),
 		'pullFromMetafield' => array(
-			'modelName'      => 'Group',
+			'modelName'      => 'Catalog',
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/groups/{groupId}/meta/{field}/pull',
-			'params'         => array('groupId', 'field', ),
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/pull',
+			'params'         => array('catalogId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/inc',
+			'params'         => array('catalogId', 'field', ),
 		),
 		'pushToMetafield' => array(
-			'modelName'      => 'Group',
+			'modelName'      => 'Catalog',
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/groups/{groupId}/meta/{field}/push',
-			'params'         => array('groupId', 'field', ),
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/push',
+			'params'         => array('catalogId', 'field', ),
 		),
 		'deleteMetafield' => array(
-			'modelName'      => 'Group',
+			'modelName'      => 'Catalog',
 			'methodName'     => 'deleteMetafield',
 			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/groups/{groupId}/meta/{field}',
-			'params'         => array('groupId', 'field', ),
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}',
+			'params'         => array('catalogId', 'field', ),
 		),
 	);
 

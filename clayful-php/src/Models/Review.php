@@ -9,13 +9,6 @@ class Review {
 	public static $path = 'products/reviews';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/products/reviews',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'Review',
 			'methodName'     => 'list',
@@ -30,6 +23,13 @@ class Review {
 			'path'           => '/v1/products/reviews/count',
 			'params'         => array(),
 		),
+		'listPublished' => array(
+			'modelName'      => 'Review',
+			'methodName'     => 'listPublished',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/products/reviews/published',
+			'params'         => array(),
+		),
 		'get' => array(
 			'modelName'      => 'Review',
 			'methodName'     => 'get',
@@ -37,33 +37,19 @@ class Review {
 			'path'           => '/v1/products/reviews/{reviewId}',
 			'params'         => array('reviewId', ),
 		),
-		'queryByProduct' => array(
+		'countPublished' => array(
 			'modelName'      => 'Review',
-			'methodName'     => 'queryByProduct',
+			'methodName'     => 'countPublished',
 			'httpMethod'     => 'GET',
-			'path'           => '/v1/products/{productId}/reviews',
-			'params'         => array('productId', ),
+			'path'           => '/v1/products/reviews/published/count',
+			'params'         => array(),
 		),
-		'listByProduct' => array(
+		'getPublished' => array(
 			'modelName'      => 'Review',
-			'methodName'     => 'listByProduct',
+			'methodName'     => 'getPublished',
 			'httpMethod'     => 'GET',
-			'path'           => '/v1/products/{productId}/reviews',
-			'params'         => array('productId', ),
-		),
-		'queryByCustomer' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'queryByCustomer',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/customers/{customerId}/products/reviews',
-			'params'         => array('customerId', ),
-		),
-		'listByCustomer' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'listByCustomer',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/customers/{customerId}/products/reviews',
-			'params'         => array('customerId', ),
+			'path'           => '/v1/products/reviews/published/{reviewId}',
+			'params'         => array('reviewId', ),
 		),
 		'create' => array(
 			'modelName'      => 'Review',
@@ -72,9 +58,9 @@ class Review {
 			'path'           => '/v1/products/reviews',
 			'params'         => array(),
 		),
-		'createAsMe' => array(
+		'createForMe' => array(
 			'modelName'      => 'Review',
-			'methodName'     => 'createAsMe',
+			'methodName'     => 'createForMe',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/me/products/reviews',
 			'params'         => array(),
@@ -83,14 +69,14 @@ class Review {
 			'modelName'      => 'Review',
 			'methodName'     => 'flag',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/{reviewId}/flag',
+			'path'           => '/v1/products/reviews/{reviewId}/flags',
 			'params'         => array('reviewId', ),
 		),
-		'flagAsMe' => array(
+		'flagForMe' => array(
 			'modelName'      => 'Review',
-			'methodName'     => 'flagAsMe',
+			'methodName'     => 'flagForMe',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/me/products/reviews/{reviewId}/flag',
+			'path'           => '/v1/me/products/reviews/{reviewId}/flags',
 			'params'         => array('reviewId', ),
 			'withoutPayload' => true,
 		),
@@ -101,35 +87,13 @@ class Review {
 			'path'           => '/v1/products/reviews/{reviewId}/helped/{upDown}',
 			'params'         => array('reviewId', 'upDown', ),
 		),
-		'cancelFlag' => array(
+		'helpedForMe' => array(
 			'modelName'      => 'Review',
-			'methodName'     => 'cancelFlag',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/{reviewId}/flag/cancel',
-			'params'         => array('reviewId', ),
-		),
-		'cancelFlagAsMe' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'cancelFlagAsMe',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/me/products/reviews/{reviewId}/flag/cancel',
-			'params'         => array('reviewId', ),
-			'withoutPayload' => true,
-		),
-		'helpedAsMe' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'helpedAsMe',
+			'methodName'     => 'helpedForMe',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/me/products/reviews/{reviewId}/helped/{upDown}',
 			'params'         => array('reviewId', 'upDown', ),
 			'withoutPayload' => true,
-		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}/push',
-			'params'         => array('reviewId', 'field', ),
 		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Review',
@@ -138,13 +102,6 @@ class Review {
 			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}/pull',
 			'params'         => array('reviewId', 'field', ),
 		),
-		'cancelHelped' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'cancelHelped',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/{reviewId}/helped/{upDown}/cancel',
-			'params'         => array('reviewId', 'upDown', ),
-		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Review',
 			'methodName'     => 'increaseMetafield',
@@ -152,13 +109,12 @@ class Review {
 			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}/inc',
 			'params'         => array('reviewId', 'field', ),
 		),
-		'cancelHelpedAsMe' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'Review',
-			'methodName'     => 'cancelHelpedAsMe',
+			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/me/products/reviews/{reviewId}/helped/{upDown}/cancel',
-			'params'         => array('reviewId', 'upDown', ),
-			'withoutPayload' => true,
+			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}/push',
+			'params'         => array('reviewId', 'field', ),
 		),
 		'update' => array(
 			'modelName'      => 'Review',
@@ -167,19 +123,12 @@ class Review {
 			'path'           => '/v1/products/reviews/{reviewId}',
 			'params'         => array('reviewId', ),
 		),
-		'updateAsMe' => array(
+		'updateForMe' => array(
 			'modelName'      => 'Review',
-			'methodName'     => 'updateAsMe',
+			'methodName'     => 'updateForMe',
 			'httpMethod'     => 'PUT',
 			'path'           => '/v1/me/products/reviews/{reviewId}',
 			'params'         => array('reviewId', ),
-		),
-		'updateAsCustomer' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'updateAsCustomer',
-			'httpMethod'     => 'PUT',
-			'path'           => '/v1/customers/{customerId}/products/reviews/{reviewId}',
-			'params'         => array('customerId', 'reviewId', ),
 		),
 		'delete' => array(
 			'modelName'      => 'Review',
@@ -188,12 +137,26 @@ class Review {
 			'path'           => '/v1/products/reviews/{reviewId}',
 			'params'         => array('reviewId', ),
 		),
-		'deleteAsMe' => array(
+		'deleteForMe' => array(
 			'modelName'      => 'Review',
-			'methodName'     => 'deleteAsMe',
+			'methodName'     => 'deleteForMe',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/me/products/reviews/{reviewId}',
 			'params'         => array('reviewId', ),
+		),
+		'cancelFlagForMe' => array(
+			'modelName'      => 'Review',
+			'methodName'     => 'cancelFlagForMe',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/me/products/reviews/{reviewId}/flags',
+			'params'         => array('reviewId', ),
+		),
+		'cancelFlag' => array(
+			'modelName'      => 'Review',
+			'methodName'     => 'cancelFlag',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/products/reviews/{reviewId}/flags/{customerId}',
+			'params'         => array('reviewId', 'customerId', ),
 		),
 		'deleteMetafield' => array(
 			'modelName'      => 'Review',
@@ -201,6 +164,20 @@ class Review {
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}',
 			'params'         => array('reviewId', 'field', ),
+		),
+		'cancelHelpedForMe' => array(
+			'modelName'      => 'Review',
+			'methodName'     => 'cancelHelpedForMe',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/me/products/reviews/{reviewId}/helped/{upDown}',
+			'params'         => array('reviewId', 'upDown', ),
+		),
+		'cancelHelped' => array(
+			'modelName'      => 'Review',
+			'methodName'     => 'cancelHelped',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/products/reviews/{reviewId}/helped/{upDown}/{customerId}',
+			'params'         => array('reviewId', 'upDown', 'customerId', ),
 		),
 	);
 

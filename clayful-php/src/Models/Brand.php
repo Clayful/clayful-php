@@ -9,13 +9,6 @@ class Brand {
 	public static $path = 'brands';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'Brand',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/brands',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'Brand',
 			'methodName'     => 'list',
@@ -37,25 +30,11 @@ class Brand {
 			'path'           => '/v1/brands/{brandId}',
 			'params'         => array('brandId', ),
 		),
-		'create' => array(
-			'modelName'      => 'Brand',
-			'methodName'     => 'create',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/brands',
-			'params'         => array(),
-		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Brand',
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/brands/{brandId}/meta/{field}/pull',
-			'params'         => array('brandId', 'field', ),
-		),
-		'increaseMetafield' => array(
-			'modelName'      => 'Brand',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/brands/{brandId}/meta/{field}/inc',
 			'params'         => array('brandId', 'field', ),
 		),
 		'pushToMetafield' => array(
@@ -65,19 +44,12 @@ class Brand {
 			'path'           => '/v1/brands/{brandId}/meta/{field}/push',
 			'params'         => array('brandId', 'field', ),
 		),
-		'update' => array(
+		'increaseMetafield' => array(
 			'modelName'      => 'Brand',
-			'methodName'     => 'update',
-			'httpMethod'     => 'PUT',
-			'path'           => '/v1/brands/{brandId}',
-			'params'         => array('brandId', ),
-		),
-		'delete' => array(
-			'modelName'      => 'Brand',
-			'methodName'     => 'delete',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/brands/{brandId}',
-			'params'         => array('brandId', ),
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/brands/{brandId}/meta/{field}/inc',
+			'params'         => array('brandId', 'field', ),
 		),
 		'deleteMetafield' => array(
 			'modelName'      => 'Brand',

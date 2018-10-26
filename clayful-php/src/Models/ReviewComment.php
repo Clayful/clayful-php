@@ -9,13 +9,6 @@ class ReviewComment {
 	public static $path = 'products/reviews/comments';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/products/reviews/comments',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'ReviewComment',
 			'methodName'     => 'list',
@@ -37,34 +30,6 @@ class ReviewComment {
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}',
 			'params'         => array('reviewCommentId', ),
 		),
-		'queryByReview' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'queryByReview',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/products/reviews/{reviewId}/comments',
-			'params'         => array('reviewId', ),
-		),
-		'listByReview' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'listByReview',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/products/reviews/{reviewId}/comments',
-			'params'         => array('reviewId', ),
-		),
-		'queryByAuthor' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'queryByAuthor',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/{authorModel}/{authorId}/products/reviews/comments',
-			'params'         => array('authorModel', 'authorId', ),
-		),
-		'listByAuthor' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'listByAuthor',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/{authorModel}/{authorId}/products/reviews/comments',
-			'params'         => array('authorModel', 'authorId', ),
-		),
 		'create' => array(
 			'modelName'      => 'ReviewComment',
 			'methodName'     => 'create',
@@ -72,9 +37,9 @@ class ReviewComment {
 			'path'           => '/v1/products/reviews/comments',
 			'params'         => array(),
 		),
-		'createAsMe' => array(
+		'createForMe' => array(
 			'modelName'      => 'ReviewComment',
-			'methodName'     => 'createAsMe',
+			'methodName'     => 'createForMe',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/me/products/reviews/comments',
 			'params'         => array(),
@@ -83,38 +48,16 @@ class ReviewComment {
 			'modelName'      => 'ReviewComment',
 			'methodName'     => 'flag',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/flag',
+			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/flags',
 			'params'         => array('reviewCommentId', ),
 		),
-		'flagAsMe' => array(
+		'flagForMe' => array(
 			'modelName'      => 'ReviewComment',
-			'methodName'     => 'flagAsMe',
+			'methodName'     => 'flagForMe',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/me/products/reviews/comments/{reviewCommentId}/flag',
-			'params'         => array('reviewCommentId', ),
-			'withoutPayload' => true,
-		),
-		'cancelFlag' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'cancelFlag',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/flag/cancel',
-			'params'         => array('reviewCommentId', ),
-		),
-		'cancelFlagAsMe' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'cancelFlagAsMe',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/me/products/reviews/comments/{reviewCommentId}/flag/cancel',
+			'path'           => '/v1/me/products/reviews/comments/{reviewCommentId}/flags',
 			'params'         => array('reviewCommentId', ),
 			'withoutPayload' => true,
-		),
-		'increaseMetafield' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/inc',
-			'params'         => array('reviewCommentId', 'field', ),
 		),
 		'pushToMetafield' => array(
 			'modelName'      => 'ReviewComment',
@@ -130,6 +73,13 @@ class ReviewComment {
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/pull',
 			'params'         => array('reviewCommentId', 'field', ),
 		),
+		'increaseMetafield' => array(
+			'modelName'      => 'ReviewComment',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/inc',
+			'params'         => array('reviewCommentId', 'field', ),
+		),
 		'update' => array(
 			'modelName'      => 'ReviewComment',
 			'methodName'     => 'update',
@@ -137,19 +87,12 @@ class ReviewComment {
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}',
 			'params'         => array('reviewCommentId', ),
 		),
-		'updateAsMe' => array(
+		'updateForMe' => array(
 			'modelName'      => 'ReviewComment',
-			'methodName'     => 'updateAsMe',
+			'methodName'     => 'updateForMe',
 			'httpMethod'     => 'PUT',
 			'path'           => '/v1/me/products/reviews/comments/{reviewCommentId}',
 			'params'         => array('reviewCommentId', ),
-		),
-		'updateAsAuthor' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'updateAsAuthor',
-			'httpMethod'     => 'PUT',
-			'path'           => '/v1/{authorModel}/{authorId}/products/reviews/comments/{reviewCommentId}',
-			'params'         => array('authorModel', 'authorId', 'reviewCommentId', ),
 		),
 		'delete' => array(
 			'modelName'      => 'ReviewComment',
@@ -158,11 +101,18 @@ class ReviewComment {
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}',
 			'params'         => array('reviewCommentId', ),
 		),
-		'deleteAsMe' => array(
+		'deleteForMe' => array(
 			'modelName'      => 'ReviewComment',
-			'methodName'     => 'deleteAsMe',
+			'methodName'     => 'deleteForMe',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/me/products/reviews/comments/{reviewCommentId}',
+			'params'         => array('reviewCommentId', ),
+		),
+		'cancelFlagForMe' => array(
+			'modelName'      => 'ReviewComment',
+			'methodName'     => 'cancelFlagForMe',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/me/products/reviews/comments/{reviewCommentId}/flags',
 			'params'         => array('reviewCommentId', ),
 		),
 		'deleteMetafield' => array(
@@ -171,6 +121,13 @@ class ReviewComment {
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}',
 			'params'         => array('reviewCommentId', 'field', ),
+		),
+		'cancelFlag' => array(
+			'modelName'      => 'ReviewComment',
+			'methodName'     => 'cancelFlag',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/flags/{customerId}',
+			'params'         => array('reviewCommentId', 'customerId', ),
 		),
 	);
 

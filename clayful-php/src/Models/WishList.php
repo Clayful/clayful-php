@@ -9,13 +9,6 @@ class WishList {
 	public static $path = 'wishlists';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/wishlists',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'WishList',
 			'methodName'     => 'list',
@@ -23,16 +16,9 @@ class WishList {
 			'path'           => '/v1/wishlists',
 			'params'         => array(),
 		),
-		'queryAsMe' => array(
+		'listForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'queryAsMe',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/me/wishlists',
-			'params'         => array(),
-		),
-		'listAsMe' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'listAsMe',
+			'methodName'     => 'listForMe',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/me/wishlists',
 			'params'         => array(),
@@ -51,39 +37,18 @@ class WishList {
 			'path'           => '/v1/wishlists/{wishListId}',
 			'params'         => array('wishListId', ),
 		),
-		'queryByCustomer' => array(
+		'countForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'queryByCustomer',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/customers/{customerId}/wishlists',
-			'params'         => array('customerId', ),
-		),
-		'listByCustomer' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'listByCustomer',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/customers/{customerId}/wishlists',
-			'params'         => array('customerId', ),
-		),
-		'countAsMe' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'countAsMe',
+			'methodName'     => 'countForMe',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/me/wishlists/count',
 			'params'         => array(),
 		),
-		'getAsMe' => array(
+		'getForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'getAsMe',
+			'methodName'     => 'getForMe',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/me/wishlists/{wishListId}',
-			'params'         => array('wishListId', ),
-		),
-		'queryProducts' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'queryProducts',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/wishlists/{wishListId}/products',
 			'params'         => array('wishListId', ),
 		),
 		'listProducts' => array(
@@ -93,16 +58,9 @@ class WishList {
 			'path'           => '/v1/wishlists/{wishListId}/products',
 			'params'         => array('wishListId', ),
 		),
-		'queryProductsAsMe' => array(
+		'listProductsForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'queryProductsAsMe',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/me/wishlists/{wishListId}/products',
-			'params'         => array('wishListId', ),
-		),
-		'listProductsAsMe' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'listProductsAsMe',
+			'methodName'     => 'listProductsForMe',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/me/wishlists/{wishListId}/products',
 			'params'         => array('wishListId', ),
@@ -114,9 +72,9 @@ class WishList {
 			'path'           => '/v1/wishlists/{wishListId}/products/count',
 			'params'         => array('wishListId', ),
 		),
-		'countProductsAsMe' => array(
+		'countProductsForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'countProductsAsMe',
+			'methodName'     => 'countProductsForMe',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/me/wishlists/{wishListId}/products/count',
 			'params'         => array('wishListId', ),
@@ -128,9 +86,9 @@ class WishList {
 			'path'           => '/v1/wishlists',
 			'params'         => array(),
 		),
-		'createAsMe' => array(
+		'createForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'createAsMe',
+			'methodName'     => 'createForMe',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/me/wishlists',
 			'params'         => array(),
@@ -142,25 +100,25 @@ class WishList {
 			'path'           => '/v1/wishlists/{wishListId}/items',
 			'params'         => array('wishListId', ),
 		),
-		'addItemAsMe' => array(
+		'addItemForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'addItemAsMe',
+			'methodName'     => 'addItemForMe',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/me/wishlists/{wishListId}/items',
 			'params'         => array('wishListId', ),
-		),
-		'increaseMetafield' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/inc',
-			'params'         => array('wishListId', 'field', ),
 		),
 		'pushToMetafield' => array(
 			'modelName'      => 'WishList',
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/push',
+			'params'         => array('wishListId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/inc',
 			'params'         => array('wishListId', 'field', ),
 		),
 		'pullFromMetafield' => array(
@@ -177,9 +135,9 @@ class WishList {
 			'path'           => '/v1/wishlists/{wishListId}',
 			'params'         => array('wishListId', ),
 		),
-		'updateAsMe' => array(
+		'updateForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'updateAsMe',
+			'methodName'     => 'updateForMe',
 			'httpMethod'     => 'PUT',
 			'path'           => '/v1/me/wishlists/{wishListId}',
 			'params'         => array('wishListId', ),
@@ -191,9 +149,9 @@ class WishList {
 			'path'           => '/v1/wishlists/{wishListId}',
 			'params'         => array('wishListId', ),
 		),
-		'deleteAsMe' => array(
+		'deleteForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'deleteAsMe',
+			'methodName'     => 'deleteForMe',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/me/wishlists/{wishListId}',
 			'params'         => array('wishListId', ),
@@ -205,9 +163,9 @@ class WishList {
 			'path'           => '/v1/wishlists/{wishListId}/items',
 			'params'         => array('wishListId', ),
 		),
-		'emptyAsMe' => array(
+		'emptyForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'emptyAsMe',
+			'methodName'     => 'emptyForMe',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/me/wishlists/{wishListId}/items',
 			'params'         => array('wishListId', ),
@@ -226,9 +184,9 @@ class WishList {
 			'path'           => '/v1/wishlists/{wishListId}/meta/{field}',
 			'params'         => array('wishListId', 'field', ),
 		),
-		'deleteItemAsMe' => array(
+		'deleteItemForMe' => array(
 			'modelName'      => 'WishList',
-			'methodName'     => 'deleteItemAsMe',
+			'methodName'     => 'deleteItemForMe',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/me/wishlists/{wishListId}/items/{productId}',
 			'params'         => array('wishListId', 'productId', ),

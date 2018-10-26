@@ -9,13 +9,6 @@ class Collection {
 	public static $path = 'collections';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'Collection',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/collections',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'Collection',
 			'methodName'     => 'list',
@@ -37,26 +30,12 @@ class Collection {
 			'path'           => '/v1/collections/{collectionId}',
 			'params'         => array('collectionId', ),
 		),
-		'queryByParent' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'Collection',
-			'methodName'     => 'queryByParent',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/collections/{collectionId}/collections',
-			'params'         => array('collectionId', ),
-		),
-		'listByParent' => array(
-			'modelName'      => 'Collection',
-			'methodName'     => 'listByParent',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/collections/{collectionId}/collections',
-			'params'         => array('collectionId', ),
-		),
-		'create' => array(
-			'modelName'      => 'Collection',
-			'methodName'     => 'create',
+			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/collections',
-			'params'         => array(),
+			'path'           => '/v1/collections/{collectionId}/meta/{field}/push',
+			'params'         => array('collectionId', 'field', ),
 		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Collection',
@@ -65,33 +44,12 @@ class Collection {
 			'path'           => '/v1/collections/{collectionId}/meta/{field}/inc',
 			'params'         => array('collectionId', 'field', ),
 		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Collection',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/collections/{collectionId}/meta/{field}/push',
-			'params'         => array('collectionId', 'field', ),
-		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Collection',
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/collections/{collectionId}/meta/{field}/pull',
 			'params'         => array('collectionId', 'field', ),
-		),
-		'update' => array(
-			'modelName'      => 'Collection',
-			'methodName'     => 'update',
-			'httpMethod'     => 'PUT',
-			'path'           => '/v1/collections/{collectionId}',
-			'params'         => array('collectionId', ),
-		),
-		'delete' => array(
-			'modelName'      => 'Collection',
-			'methodName'     => 'delete',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/collections/{collectionId}',
-			'params'         => array('collectionId', ),
 		),
 		'deleteMetafield' => array(
 			'modelName'      => 'Collection',

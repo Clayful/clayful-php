@@ -9,13 +9,6 @@ class PaymentMethod {
 	public static $path = 'payments/methods';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'PaymentMethod',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/payments/methods',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'PaymentMethod',
 			'methodName'     => 'list',

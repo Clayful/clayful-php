@@ -9,13 +9,6 @@ class Coupon {
 	public static $path = 'coupons';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'Coupon',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/coupons',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'Coupon',
 			'methodName'     => 'list',
@@ -37,6 +30,13 @@ class Coupon {
 			'path'           => '/v1/coupons/{couponId}',
 			'params'         => array('couponId', ),
 		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Coupon',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/coupons/{couponId}/meta/{field}/pull',
+			'params'         => array('couponId', 'field', ),
+		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Coupon',
 			'methodName'     => 'increaseMetafield',
@@ -49,13 +49,6 @@ class Coupon {
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/coupons/{couponId}/meta/{field}/push',
-			'params'         => array('couponId', 'field', ),
-		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'Coupon',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/coupons/{couponId}/meta/{field}/pull',
 			'params'         => array('couponId', 'field', ),
 		),
 		'deleteMetafield' => array(

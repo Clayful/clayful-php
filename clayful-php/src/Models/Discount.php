@@ -9,13 +9,6 @@ class Discount {
 	public static $path = 'discounts';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'Discount',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/discounts',
-			'params'         => array(),
-		),
 		'list' => array(
 			'modelName'      => 'Discount',
 			'methodName'     => 'list',
@@ -37,11 +30,11 @@ class Discount {
 			'path'           => '/v1/discounts/{discountId}',
 			'params'         => array('discountId', ),
 		),
-		'pullFromMetafield' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'Discount',
-			'methodName'     => 'pullFromMetafield',
+			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/discounts/{discountId}/meta/{field}/pull',
+			'path'           => '/v1/discounts/{discountId}/meta/{field}/push',
 			'params'         => array('discountId', 'field', ),
 		),
 		'increaseMetafield' => array(
@@ -51,11 +44,11 @@ class Discount {
 			'path'           => '/v1/discounts/{discountId}/meta/{field}/inc',
 			'params'         => array('discountId', 'field', ),
 		),
-		'pushToMetafield' => array(
+		'pullFromMetafield' => array(
 			'modelName'      => 'Discount',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/discounts/{discountId}/meta/{field}/push',
+			'path'           => '/v1/discounts/{discountId}/meta/{field}/pull',
 			'params'         => array('discountId', 'field', ),
 		),
 		'deleteMetafield' => array(

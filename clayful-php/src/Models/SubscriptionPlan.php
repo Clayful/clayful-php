@@ -3,39 +3,32 @@ namespace Clayful;
 
 use Clayful\Clayful;
 
-class Warehouse {
+class SubscriptionPlan {
 
-	public static $name = 'Warehouse';
-	public static $path = 'warehouses';
+	public static $name = 'SubscriptionPlan';
+	public static $path = 'subscriptions/plans';
 
 	public static $apis = array(
-		'query' => array(
-			'modelName'      => 'Warehouse',
-			'methodName'     => 'query',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/warehouses',
-			'params'         => array(),
-		),
 		'list' => array(
-			'modelName'      => 'Warehouse',
+			'modelName'      => 'SubscriptionPlan',
 			'methodName'     => 'list',
 			'httpMethod'     => 'GET',
-			'path'           => '/v1/warehouses',
+			'path'           => '/v1/subscriptions/plans',
 			'params'         => array(),
 		),
 		'count' => array(
-			'modelName'      => 'Warehouse',
+			'modelName'      => 'SubscriptionPlan',
 			'methodName'     => 'count',
 			'httpMethod'     => 'GET',
-			'path'           => '/v1/warehouses/count',
+			'path'           => '/v1/subscriptions/plans/count',
 			'params'         => array(),
 		),
 		'get' => array(
-			'modelName'      => 'Warehouse',
+			'modelName'      => 'SubscriptionPlan',
 			'methodName'     => 'get',
 			'httpMethod'     => 'GET',
-			'path'           => '/v1/warehouses/{warehouseId}',
-			'params'         => array('warehouseId', ),
+			'path'           => '/v1/subscriptions/plans/{subscriptionPlanId}',
+			'params'         => array('subscriptionPlanId', ),
 		),
 	);
 
