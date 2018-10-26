@@ -1,6 +1,6 @@
 # Clayful PHP SDK
 
-Official PHP SDK for [clayful.io](http://clayful.io).
+Official PHP SDK for [clayful.io](https://clayful.io).
 
 ## Tests
 
@@ -10,4 +10,4 @@ vendor/bin/phpunit
 
 ## Links
 
-- [API & SDK Documentation](http://doc.clayful.io)
+- [API & SDK Documentation](https://dev.clayful.io)
