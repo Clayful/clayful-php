@@ -30,6 +30,13 @@ class Country {
 			'path'           => '/v1/countries/{countryId}',
 			'params'         => array('countryId', ),
 		),
+		'query' => array(
+			'modelName'      => 'Country',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/countries',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

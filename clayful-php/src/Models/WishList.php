@@ -191,6 +191,34 @@ class WishList {
 			'path'           => '/v1/me/wishlists/{wishListId}/items/{productId}',
 			'params'         => array('wishListId', 'productId', ),
 		),
+		'query' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/wishlists',
+			'params'         => array(),
+		),
+		'queryForMe' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'queryForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/wishlists',
+			'params'         => array(),
+		),
+		'queryProducts' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'queryProducts',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/wishlists/{wishListId}/products',
+			'params'         => array('wishListId', ),
+		),
+		'queryProductsForMe' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'queryProductsForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/wishlists/{wishListId}/products',
+			'params'         => array('wishListId', ),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

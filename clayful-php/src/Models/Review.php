@@ -179,6 +179,20 @@ class Review {
 			'path'           => '/v1/products/reviews/{reviewId}/helped/{upDown}/{customerId}',
 			'params'         => array('reviewId', 'upDown', 'customerId', ),
 		),
+		'query' => array(
+			'modelName'      => 'Review',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/products/reviews',
+			'params'         => array(),
+		),
+		'queryPublished' => array(
+			'modelName'      => 'Review',
+			'methodName'     => 'queryPublished',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/products/reviews/published',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

@@ -129,6 +129,13 @@ class ReviewComment {
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/flags/{customerId}',
 			'params'         => array('reviewCommentId', 'customerId', ),
 		),
+		'query' => array(
+			'modelName'      => 'ReviewComment',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/products/reviews/comments',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

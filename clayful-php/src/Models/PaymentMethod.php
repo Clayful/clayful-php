@@ -30,6 +30,13 @@ class PaymentMethod {
 			'path'           => '/v1/payments/methods/{paymentMethodId}',
 			'params'         => array('paymentMethodId', ),
 		),
+		'query' => array(
+			'modelName'      => 'PaymentMethod',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/payments/methods',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

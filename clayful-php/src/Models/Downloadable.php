@@ -38,6 +38,13 @@ class Downloadable {
 			'params'         => array('downloadableId', ),
 			'withoutPayload' => true,
 		),
+		'query' => array(
+			'modelName'      => 'Downloadable',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/downloadables',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

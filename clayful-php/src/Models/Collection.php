@@ -58,6 +58,13 @@ class Collection {
 			'path'           => '/v1/collections/{collectionId}/meta/{field}',
 			'params'         => array('collectionId', 'field', ),
 		),
+		'query' => array(
+			'modelName'      => 'Collection',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/collections',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

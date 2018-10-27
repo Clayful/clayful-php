@@ -30,6 +30,13 @@ class ShippingMethod {
 			'path'           => '/v1/shipping/methods/{shippingMethodId}',
 			'params'         => array('shippingMethodId', ),
 		),
+		'query' => array(
+			'modelName'      => 'ShippingMethod',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/shipping/methods',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

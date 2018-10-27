@@ -58,6 +58,13 @@ class Group {
 			'path'           => '/v1/groups/{groupId}/meta/{field}',
 			'params'         => array('groupId', 'field', ),
 		),
+		'query' => array(
+			'modelName'      => 'Group',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/groups',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

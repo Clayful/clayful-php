@@ -30,6 +30,13 @@ class Currency {
 			'path'           => '/v1/currencies/{currencyId}',
 			'params'         => array('currencyId', ),
 		),
+		'query' => array(
+			'modelName'      => 'Currency',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/currencies',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

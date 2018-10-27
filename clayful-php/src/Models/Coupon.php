@@ -58,6 +58,13 @@ class Coupon {
 			'path'           => '/v1/coupons/{couponId}/meta/{field}',
 			'params'         => array('couponId', 'field', ),
 		),
+		'query' => array(
+			'modelName'      => 'Coupon',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/coupons',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

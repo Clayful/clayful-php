@@ -398,6 +398,41 @@ class Order {
 			'path'           => '/v1/orders/{orderId}/transactions/payments/methods/{paymentMethodId}',
 			'params'         => array('orderId', 'paymentMethodId', ),
 		),
+		'query' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/orders',
+			'params'         => array(),
+		),
+		'queryForMe' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'queryForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/orders',
+			'params'         => array(),
+		),
+		'queryBySubscription' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'queryBySubscription',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/subscriptions/{subscriptionId}/orders',
+			'params'         => array('subscriptionId', ),
+		),
+		'queryBySubscriptionForMe' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'queryBySubscriptionForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/subscriptions/{subscriptionId}/orders',
+			'params'         => array('subscriptionId', ),
+		),
+		'queryInventoryOperations' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'queryInventoryOperations',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/orders/{orderId}/inventory/operations',
+			'params'         => array('orderId', ),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

@@ -58,6 +58,13 @@ class Brand {
 			'path'           => '/v1/brands/{brandId}/meta/{field}',
 			'params'         => array('brandId', 'field', ),
 		),
+		'query' => array(
+			'modelName'      => 'Brand',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/brands',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

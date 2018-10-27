@@ -30,6 +30,13 @@ class OrderTag {
 			'path'           => '/v1/orders/tags/{orderTagId}',
 			'params'         => array('orderTagId', ),
 		),
+		'query' => array(
+			'modelName'      => 'OrderTag',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/orders/tags',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

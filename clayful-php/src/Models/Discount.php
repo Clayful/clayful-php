@@ -58,6 +58,13 @@ class Discount {
 			'path'           => '/v1/discounts/{discountId}/meta/{field}',
 			'params'         => array('discountId', 'field', ),
 		),
+		'query' => array(
+			'modelName'      => 'Discount',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/discounts',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

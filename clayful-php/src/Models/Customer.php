@@ -248,6 +248,55 @@ class Customer {
 			'path'           => '/v1/customers/{customerId}/meta/{field}',
 			'params'         => array('customerId', 'field', ),
 		),
+		'query' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/customers',
+			'params'         => array(),
+		),
+		'queryCouponsForMe' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'queryCouponsForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/coupons',
+			'params'         => array(),
+		),
+		'queryCoupons' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'queryCoupons',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/customers/{customerId}/coupons',
+			'params'         => array('customerId', ),
+		),
+		'queryByFlagVotes' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'queryByFlagVotes',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/{voteModel}/{voteModelId}/flags/customers',
+			'params'         => array('voteModel', 'voteModelId', ),
+		),
+		'queryByHelpVotes' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'queryByHelpVotes',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/{voteModel}/{voteModelId}/helped/{upDown}/customers',
+			'params'         => array('voteModel', 'voteModelId', 'upDown', ),
+		),
+		'queryByFlagVotes' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'queryByFlagVotes',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/{voteModel}/{voteModelId}/flags/customers',
+			'params'         => array('voteModel', 'voteModelId', ),
+		),
+		'queryByHelpVotes' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'queryByHelpVotes',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/{voteModel}/{voteModelId}/helped/{upDown}/customers',
+			'params'         => array('voteModel', 'voteModelId', 'upDown', ),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

@@ -58,6 +58,13 @@ class Catalog {
 			'path'           => '/v1/catalogs/{catalogId}/meta/{field}',
 			'params'         => array('catalogId', 'field', ),
 		),
+		'query' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/catalogs',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

@@ -193,6 +193,27 @@ class Subscription {
 			'path'           => '/v1/subscriptions/{subscriptionId}/inventory/operations/{operationId}',
 			'params'         => array('subscriptionId', 'operationId', ),
 		),
+		'query' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/subscriptions',
+			'params'         => array(),
+		),
+		'queryForMe' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'queryForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/subscriptions',
+			'params'         => array(),
+		),
+		'queryInventoryOperations' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'queryInventoryOperations',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/subscriptions/{subscriptionId}/inventory/operations',
+			'params'         => array('subscriptionId', ),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

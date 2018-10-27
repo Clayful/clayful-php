@@ -9,6 +9,25 @@ const models = require('clayful-lib-spec');
 
 const ext = '.php';
 
+models.forEach(model => {
+
+	model.apis = [
+		...model.apis,
+		...model.apis
+			.filter(api => api.method.indexOf('list') >= 0)
+			.map(api => {
+
+				const cloned = _.cloneDeep(api);
+
+				cloned.module = cloned.module.replace('list', 'query');
+				cloned.method = cloned.method.replace('list', 'query');
+
+				return cloned;
+			})
+	];
+
+});
+
 gulp.task('clean', () => {
 
 	return gulp.src(['./clayful-php/src/Models/*'], { read: false })

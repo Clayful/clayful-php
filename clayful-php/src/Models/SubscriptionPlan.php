@@ -30,6 +30,13 @@ class SubscriptionPlan {
 			'path'           => '/v1/subscriptions/plans/{subscriptionPlanId}',
 			'params'         => array('subscriptionPlanId', ),
 		),
+		'query' => array(
+			'modelName'      => 'SubscriptionPlan',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/subscriptions/plans',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

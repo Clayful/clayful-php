@@ -58,6 +58,13 @@ class Product {
 			'path'           => '/v1/products/{productId}/meta/{field}',
 			'params'         => array('productId', 'field', ),
 		),
+		'query' => array(
+			'modelName'      => 'Product',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/products',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

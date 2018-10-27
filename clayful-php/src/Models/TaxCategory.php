@@ -30,6 +30,13 @@ class TaxCategory {
 			'path'           => '/v1/taxes/categories/{taxCategoryId}',
 			'params'         => array('taxCategoryId', ),
 		),
+		'query' => array(
+			'modelName'      => 'TaxCategory',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/taxes/categories',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

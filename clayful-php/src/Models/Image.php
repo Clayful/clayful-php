@@ -120,6 +120,20 @@ class Image {
 			'path'           => '/v1/customers/{customerId}/images/{imageId}',
 			'params'         => array('customerId', 'imageId', ),
 		),
+		'query' => array(
+			'modelName'      => 'Image',
+			'methodName'     => 'query',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/images',
+			'params'         => array(),
+		),
+		'queryForMe' => array(
+			'modelName'      => 'Image',
+			'methodName'     => 'queryForMe',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/me/images',
+			'params'         => array(),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {
