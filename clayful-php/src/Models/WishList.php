@@ -219,6 +219,20 @@ class WishList {
 			'path'           => '/v1/me/wishlists/{wishListId}/products',
 			'params'         => array('wishListId', ),
 		),
+		'clear' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'clear',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/wishlists/{wishListId}/items',
+			'params'         => array('wishListId', ),
+		),
+		'clearForMe' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'clearForMe',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/me/wishlists/{wishListId}/items',
+			'params'         => array('wishListId', ),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {

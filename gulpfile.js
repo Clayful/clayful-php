@@ -13,6 +13,7 @@ models.forEach(model => {
 
 	model.apis = [
 		...model.apis,
+		// list -> query
 		...model.apis
 			.filter(api => api.method.indexOf('list') >= 0)
 			.map(api => {
@@ -21,6 +22,18 @@ models.forEach(model => {
 
 				cloned.module = cloned.module.replace('list', 'query');
 				cloned.method = cloned.method.replace('list', 'query');
+
+				return cloned;
+			}),
+		// empty -> clear
+		...model.apis
+			.filter(api => api.method.indexOf('empty') >= 0)
+			.map(api => {
+
+				const cloned = _.cloneDeep(api);
+
+				cloned.module = cloned.module.replace('empty', 'clear');
+				cloned.method = cloned.method.replace('empty', 'clear');
 
 				return cloned;
 			})

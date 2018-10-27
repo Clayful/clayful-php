@@ -135,6 +135,20 @@ class Cart {
 			'path'           => '/v1/customers/{customerId}/cart/items/{itemId}',
 			'params'         => array('customerId', 'itemId', ),
 		),
+		'clearForMe' => array(
+			'modelName'      => 'Cart',
+			'methodName'     => 'clearForMe',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/me/cart/items',
+			'params'         => array(),
+		),
+		'clear' => array(
+			'modelName'      => 'Cart',
+			'methodName'     => 'clear',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/customers/{customerId}/cart/items',
+			'params'         => array('customerId', ),
+		),
 	);
 
 	public static function __callStatic($name, $arguments) {
