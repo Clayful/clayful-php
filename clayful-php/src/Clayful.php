@@ -43,6 +43,10 @@ class Clayful {
 			$headers['Authorization-Customer'] = $o['customer'];
 		}
 
+		if (array_key_exists('reCAPTCHA', $o)) {
+			$headers['reCAPTCHA-Response'] = $o['reCAPTCHA'];
+		}
+
 		if (array_key_exists('debugLanguage', $o)) {
 			$headers['Accept-Debug-Language'] = $o['debugLanguage'];
 		}
@@ -65,9 +69,13 @@ class Clayful {
 
 		$normalize = function($value) {
 
-			// Since `http_build_query` changes boolean to 1, 0,
-			// manually change boolean to 'true', 'false' string.
-			return rawurlencode(is_bool($value) ? ($value ? 'true' : 'false') : $value);
+			if (is_bool($value)) {
+				// Since `http_build_query` changes boolean to 1, 0,
+				// manually change boolean to 'true', 'false' string.
+				return $value ? 'true' : 'false';
+			}
+
+			return $value;
 
 		};
 

@@ -55,7 +55,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 
 	}
 
-	public function testConvertOptionsToEmptyHeaders() {
+	public function testConvertOptionsToHeaders() {
 
 		$this->assertEquals(Clayful::optionsToHeaders(array(
 			'language'      => 'ko',
@@ -63,18 +63,20 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 			'timeZone'      => 'Asia/Seoul',
 			'client'        => 'client_token',
 			'customer'      => 'customer_token',
+			'reCAPTCHA'     => 'response',
 			'debugLanguage' => 'en',
 			'headers'       => array(
 				'X-Extra' => 'Extra'
 			)
  		)), array(
-			'Accept-Language'          => 'ko',
-			'Accept-Currency'          => 'KRW',
-			'Accept-Time-Zone'         => 'Asia/Seoul',
-			'Authorization'            => 'Bearer client_token',
-			'Authorization-Customer'   => 'customer_token',
-			'Accept-Debug-Language'    => 'en',
-			'X-Extra'                  => 'Extra'
+			'Accept-Language'        => 'ko',
+			'Accept-Currency'        => 'KRW',
+			'Accept-Time-Zone'       => 'Asia/Seoul',
+			'Authorization'          => 'Bearer client_token',
+			'Authorization-Customer' => 'customer_token',
+			'reCAPTCHA-Response'     => 'response',
+			'Accept-Debug-Language'  => 'en',
+			'X-Extra'                => 'Extra'
 		));
 
 	}
@@ -98,7 +100,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 			'string'  => 'string',
 			'number'  => '100',
 			'boolean' => 'true',
-			'special' => '%20%2B%26',
+			'special' => ' +&',
 		));
 
 	}
@@ -480,6 +482,7 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
 			'timeZone'      => 'Asia/Seoul',
 			'client'        => 'client_token',
 			'customer'      => 'customer_token',
+			'reCAPTCHA'     => 'response',
 			'debugLanguage' => 'en',
 			'headers'       => array(
 				'X-Extra' => 'Extra'
@@ -487,16 +490,17 @@ class ClayfulTest extends \PHPUnit_Framework_TestCase {
  		));
 
 		$this->assertEquals(Clayful::$defaultHeaders, array(
-			'Accept-Encoding'          => 'gzip',
-			'Accept-Language'          => 'ko',
-			'Accept-Currency'          => 'KRW',
-			'Accept-Time-Zone'         => 'Asia/Seoul',
-			'Authorization'            => 'Bearer client_token',
-			'Authorization-Customer'   => 'customer_token',
-			'User-Agent'               => 'clayful-php',
-			'Clayful-SDK'              => 'clayful-php',
-			'Accept-Debug-Language'    => 'en',
-			'X-Extra'                  => 'Extra'
+			'Accept-Encoding'        => 'gzip',
+			'Accept-Language'        => 'ko',
+			'Accept-Currency'        => 'KRW',
+			'Accept-Time-Zone'       => 'Asia/Seoul',
+			'Authorization'          => 'Bearer client_token',
+			'Authorization-Customer' => 'customer_token',
+			'User-Agent'             => 'clayful-php',
+			'Clayful-SDK'            => 'clayful-php',
+			'reCAPTCHA-Response'     => 'response',
+			'Accept-Debug-Language'  => 'en',
+			'X-Extra'                => 'Extra'
 		));
 
 	}

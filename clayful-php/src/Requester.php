@@ -46,11 +46,12 @@ class Requester {
 			$requestOptions
 		);
 
-		$body = $response->getBody();
+		$body = (string) $response->getBody();
 		$body = empty($body) ? null : $body;
 
 		$status = $response->getStatusCode();
 		$data = empty($body) ? null : json_decode($body, true); // as array
+
 		$headers = array_map(function($values) {
 			return implode(', ', $values);
 		}, $response->getHeaders());
