@@ -1,10 +1,11 @@
 {
-    "name": "clayful/clayful-php",
+    "name": "clayful/clayful",
     "description": "PHP SDK for Clayful API",
     "version": "0.0.0",
     "type": "library",
     "keywords": ["eCommerce", "clayful"],
     "homepage": "https://github.com/Clayful/clayful-php",
+    "readme": "./README.md",
     "license": "MIT",
     "authors": [
         {
