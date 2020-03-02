@@ -107,6 +107,13 @@ class WishList {
 			'path'           => '/v1/me/wishlists/{wishListId}/items',
 			'params'         => array('wishListId', ),
 		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/pull',
+			'params'         => array('wishListId', 'field', ),
+		),
 		'pushToMetafield' => array(
 			'modelName'      => 'WishList',
 			'methodName'     => 'pushToMetafield',
@@ -119,13 +126,6 @@ class WishList {
 			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/inc',
-			'params'         => array('wishListId', 'field', ),
-		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/pull',
 			'params'         => array('wishListId', 'field', ),
 		),
 		'update' => array(
@@ -170,19 +170,19 @@ class WishList {
 			'path'           => '/v1/me/wishlists/{wishListId}/items',
 			'params'         => array('wishListId', ),
 		),
-		'deleteItem' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'deleteItem',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/wishlists/{wishListId}/items/{productId}',
-			'params'         => array('wishListId', 'productId', ),
-		),
 		'deleteMetafield' => array(
 			'modelName'      => 'WishList',
 			'methodName'     => 'deleteMetafield',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/wishlists/{wishListId}/meta/{field}',
 			'params'         => array('wishListId', 'field', ),
+		),
+		'deleteItem' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'deleteItem',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/wishlists/{wishListId}/items/{productId}',
+			'params'         => array('wishListId', 'productId', ),
 		),
 		'deleteItemForMe' => array(
 			'modelName'      => 'WishList',

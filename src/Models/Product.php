@@ -37,18 +37,18 @@ class Product {
 			'path'           => '/v1/products/{productId}/meta/{field}/inc',
 			'params'         => array('productId', 'field', ),
 		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Product',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/{productId}/meta/{field}/push',
-			'params'         => array('productId', 'field', ),
-		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Product',
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/products/{productId}/meta/{field}/pull',
+			'params'         => array('productId', 'field', ),
+		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Product',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/products/{productId}/meta/{field}/push',
 			'params'         => array('productId', 'field', ),
 		),
 		'deleteMetafield' => array(

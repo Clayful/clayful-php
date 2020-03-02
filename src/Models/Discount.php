@@ -37,18 +37,18 @@ class Discount {
 			'path'           => '/v1/discounts/{discountId}/meta/{field}/push',
 			'params'         => array('discountId', 'field', ),
 		),
-		'increaseMetafield' => array(
-			'modelName'      => 'Discount',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/discounts/{discountId}/meta/{field}/inc',
-			'params'         => array('discountId', 'field', ),
-		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Discount',
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/discounts/{discountId}/meta/{field}/pull',
+			'params'         => array('discountId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Discount',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/discounts/{discountId}/meta/{field}/inc',
 			'params'         => array('discountId', 'field', ),
 		),
 		'deleteMetafield' => array(

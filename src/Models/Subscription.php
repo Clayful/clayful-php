@@ -58,13 +58,12 @@ class Subscription {
 			'path'           => '/v1/subscriptions/{subscriptionId}/inventory/operations',
 			'params'         => array('subscriptionId', ),
 		),
-		'syncInventory' => array(
+		'cancel' => array(
 			'modelName'      => 'Subscription',
-			'methodName'     => 'syncInventory',
+			'methodName'     => 'cancel',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/subscriptions/{subscriptionId}/synced',
+			'path'           => '/v1/subscriptions/{subscriptionId}/cancellation',
 			'params'         => array('subscriptionId', ),
-			'withoutPayload' => true,
 		),
 		'authenticate' => array(
 			'modelName'      => 'Subscription',
@@ -73,12 +72,20 @@ class Subscription {
 			'path'           => '/v1/subscriptions/{subscriptionId}/auth',
 			'params'         => array('subscriptionId', ),
 		),
-		'cancel' => array(
+		'schedule' => array(
 			'modelName'      => 'Subscription',
-			'methodName'     => 'cancel',
+			'methodName'     => 'schedule',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/subscriptions/{subscriptionId}/cancellation',
+			'path'           => '/v1/subscriptions/{subscriptionId}/scheduled',
 			'params'         => array('subscriptionId', ),
+		),
+		'syncInventory' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'syncInventory',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/subscriptions/{subscriptionId}/synced',
+			'params'         => array('subscriptionId', ),
+			'withoutPayload' => true,
 		),
 		'markAsDone' => array(
 			'modelName'      => 'Subscription',
@@ -87,13 +94,6 @@ class Subscription {
 			'path'           => '/v1/subscriptions/{subscriptionId}/done',
 			'params'         => array('subscriptionId', ),
 			'withoutPayload' => true,
-		),
-		'schedule' => array(
-			'modelName'      => 'Subscription',
-			'methodName'     => 'schedule',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/subscriptions/{subscriptionId}/scheduled',
-			'params'         => array('subscriptionId', ),
 		),
 		'scheduleForMe' => array(
 			'modelName'      => 'Subscription',
@@ -116,13 +116,6 @@ class Subscription {
 			'path'           => '/v1/subscriptions/{subscriptionId}/schedules/orders',
 			'params'         => array('subscriptionId', ),
 		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'Subscription',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/subscriptions/{subscriptionId}/meta/{field}/pull',
-			'params'         => array('subscriptionId', 'field', ),
-		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Subscription',
 			'methodName'     => 'increaseMetafield',
@@ -135,6 +128,13 @@ class Subscription {
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/subscriptions/{subscriptionId}/meta/{field}/push',
+			'params'         => array('subscriptionId', 'field', ),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/subscriptions/{subscriptionId}/meta/{field}/pull',
 			'params'         => array('subscriptionId', 'field', ),
 		),
 		'update' => array(

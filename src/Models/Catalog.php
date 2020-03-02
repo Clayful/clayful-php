@@ -30,11 +30,11 @@ class Catalog {
 			'path'           => '/v1/catalogs/{catalogId}',
 			'params'         => array('catalogId', ),
 		),
-		'pullFromMetafield' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'Catalog',
-			'methodName'     => 'pullFromMetafield',
+			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/pull',
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/push',
 			'params'         => array('catalogId', 'field', ),
 		),
 		'increaseMetafield' => array(
@@ -44,11 +44,11 @@ class Catalog {
 			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/inc',
 			'params'         => array('catalogId', 'field', ),
 		),
-		'pushToMetafield' => array(
+		'pullFromMetafield' => array(
 			'modelName'      => 'Catalog',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/push',
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/pull',
 			'params'         => array('catalogId', 'field', ),
 		),
 		'deleteMetafield' => array(

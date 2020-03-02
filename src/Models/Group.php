@@ -30,13 +30,6 @@ class Group {
 			'path'           => '/v1/groups/{groupId}',
 			'params'         => array('groupId', ),
 		),
-		'increaseMetafield' => array(
-			'modelName'      => 'Group',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/groups/{groupId}/meta/{field}/inc',
-			'params'         => array('groupId', 'field', ),
-		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Group',
 			'methodName'     => 'pullFromMetafield',
@@ -49,6 +42,13 @@ class Group {
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/groups/{groupId}/meta/{field}/push',
+			'params'         => array('groupId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Group',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/groups/{groupId}/meta/{field}/inc',
 			'params'         => array('groupId', 'field', ),
 		),
 		'deleteMetafield' => array(

@@ -59,11 +59,11 @@ class ReviewComment {
 			'params'         => array('reviewCommentId', ),
 			'withoutPayload' => true,
 		),
-		'pushToMetafield' => array(
+		'increaseMetafield' => array(
 			'modelName'      => 'ReviewComment',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/push',
+			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/inc',
 			'params'         => array('reviewCommentId', 'field', ),
 		),
 		'pullFromMetafield' => array(
@@ -73,11 +73,11 @@ class ReviewComment {
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/pull',
 			'params'         => array('reviewCommentId', 'field', ),
 		),
-		'increaseMetafield' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'ReviewComment',
-			'methodName'     => 'increaseMetafield',
+			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/inc',
+			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/push',
 			'params'         => array('reviewCommentId', 'field', ),
 		),
 		'update' => array(
@@ -115,19 +115,19 @@ class ReviewComment {
 			'path'           => '/v1/me/products/reviews/comments/{reviewCommentId}/flags',
 			'params'         => array('reviewCommentId', ),
 		),
-		'deleteMetafield' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'deleteMetafield',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}',
-			'params'         => array('reviewCommentId', 'field', ),
-		),
 		'cancelFlag' => array(
 			'modelName'      => 'ReviewComment',
 			'methodName'     => 'cancelFlag',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/flags/{customerId}',
 			'params'         => array('reviewCommentId', 'customerId', ),
+		),
+		'deleteMetafield' => array(
+			'modelName'      => 'ReviewComment',
+			'methodName'     => 'deleteMetafield',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}',
+			'params'         => array('reviewCommentId', 'field', ),
 		),
 		'query' => array(
 			'modelName'      => 'ReviewComment',

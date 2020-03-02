@@ -30,18 +30,18 @@ class Brand {
 			'path'           => '/v1/brands/{brandId}',
 			'params'         => array('brandId', ),
 		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'Brand',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/brands/{brandId}/meta/{field}/pull',
-			'params'         => array('brandId', 'field', ),
-		),
 		'pushToMetafield' => array(
 			'modelName'      => 'Brand',
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/brands/{brandId}/meta/{field}/push',
+			'params'         => array('brandId', 'field', ),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Brand',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/brands/{brandId}/meta/{field}/pull',
 			'params'         => array('brandId', 'field', ),
 		),
 		'increaseMetafield' => array(
