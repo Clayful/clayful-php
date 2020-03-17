@@ -30,6 +30,20 @@ class Vendor {
 			'path'           => '/v1/vendors/{vendorId}',
 			'params'         => array('vendorId', ),
 		),
+		'create' => array(
+			'modelName'      => 'Vendor',
+			'methodName'     => 'create',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/vendors',
+			'params'         => array(),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Vendor',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/vendors/{vendorId}/meta/{field}/pull',
+			'params'         => array('vendorId', 'field', ),
+		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Vendor',
 			'methodName'     => 'increaseMetafield',
@@ -44,12 +58,19 @@ class Vendor {
 			'path'           => '/v1/vendors/{vendorId}/meta/{field}/push',
 			'params'         => array('vendorId', 'field', ),
 		),
-		'pullFromMetafield' => array(
+		'update' => array(
 			'modelName'      => 'Vendor',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/vendors/{vendorId}/meta/{field}/pull',
-			'params'         => array('vendorId', 'field', ),
+			'methodName'     => 'update',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/vendors/{vendorId}',
+			'params'         => array('vendorId', ),
+		),
+		'delete' => array(
+			'modelName'      => 'Vendor',
+			'methodName'     => 'delete',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/vendors/{vendorId}',
+			'params'         => array('vendorId', ),
 		),
 		'deleteMetafield' => array(
 			'modelName'      => 'Vendor',

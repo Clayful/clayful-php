@@ -30,18 +30,18 @@ class Group {
 			'path'           => '/v1/groups/{groupId}',
 			'params'         => array('groupId', ),
 		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'Group',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/groups/{groupId}/meta/{field}/pull',
-			'params'         => array('groupId', 'field', ),
-		),
 		'pushToMetafield' => array(
 			'modelName'      => 'Group',
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/groups/{groupId}/meta/{field}/push',
+			'params'         => array('groupId', 'field', ),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Group',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/groups/{groupId}/meta/{field}/pull',
 			'params'         => array('groupId', 'field', ),
 		),
 		'increaseMetafield' => array(

@@ -72,6 +72,14 @@ class Subscription {
 			'path'           => '/v1/subscriptions/{subscriptionId}/auth',
 			'params'         => array('subscriptionId', ),
 		),
+		'markAsDone' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'markAsDone',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/subscriptions/{subscriptionId}/done',
+			'params'         => array('subscriptionId', ),
+			'withoutPayload' => true,
+		),
 		'schedule' => array(
 			'modelName'      => 'Subscription',
 			'methodName'     => 'schedule',
@@ -84,14 +92,6 @@ class Subscription {
 			'methodName'     => 'syncInventory',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/subscriptions/{subscriptionId}/synced',
-			'params'         => array('subscriptionId', ),
-			'withoutPayload' => true,
-		),
-		'markAsDone' => array(
-			'modelName'      => 'Subscription',
-			'methodName'     => 'markAsDone',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/subscriptions/{subscriptionId}/done',
 			'params'         => array('subscriptionId', ),
 			'withoutPayload' => true,
 		),
@@ -116,13 +116,6 @@ class Subscription {
 			'path'           => '/v1/subscriptions/{subscriptionId}/schedules/orders',
 			'params'         => array('subscriptionId', ),
 		),
-		'increaseMetafield' => array(
-			'modelName'      => 'Subscription',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/subscriptions/{subscriptionId}/meta/{field}/inc',
-			'params'         => array('subscriptionId', 'field', ),
-		),
 		'pushToMetafield' => array(
 			'modelName'      => 'Subscription',
 			'methodName'     => 'pushToMetafield',
@@ -135,6 +128,13 @@ class Subscription {
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/subscriptions/{subscriptionId}/meta/{field}/pull',
+			'params'         => array('subscriptionId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Subscription',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/subscriptions/{subscriptionId}/meta/{field}/inc',
 			'params'         => array('subscriptionId', 'field', ),
 		),
 		'update' => array(

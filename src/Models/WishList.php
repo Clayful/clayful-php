@@ -107,18 +107,18 @@ class WishList {
 			'path'           => '/v1/me/wishlists/{wishListId}/items',
 			'params'         => array('wishListId', ),
 		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/pull',
-			'params'         => array('wishListId', 'field', ),
-		),
 		'pushToMetafield' => array(
 			'modelName'      => 'WishList',
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/push',
+			'params'         => array('wishListId', 'field', ),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/pull',
 			'params'         => array('wishListId', 'field', ),
 		),
 		'increaseMetafield' => array(
@@ -170,19 +170,19 @@ class WishList {
 			'path'           => '/v1/me/wishlists/{wishListId}/items',
 			'params'         => array('wishListId', ),
 		),
-		'deleteMetafield' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'deleteMetafield',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/wishlists/{wishListId}/meta/{field}',
-			'params'         => array('wishListId', 'field', ),
-		),
 		'deleteItem' => array(
 			'modelName'      => 'WishList',
 			'methodName'     => 'deleteItem',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/wishlists/{wishListId}/items/{productId}',
 			'params'         => array('wishListId', 'productId', ),
+		),
+		'deleteMetafield' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'deleteMetafield',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/wishlists/{wishListId}/meta/{field}',
+			'params'         => array('wishListId', 'field', ),
 		),
 		'deleteItemForMe' => array(
 			'modelName'      => 'WishList',

@@ -30,11 +30,11 @@ class Coupon {
 			'path'           => '/v1/coupons/{couponId}',
 			'params'         => array('couponId', ),
 		),
-		'pullFromMetafield' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'Coupon',
-			'methodName'     => 'pullFromMetafield',
+			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/coupons/{couponId}/meta/{field}/pull',
+			'path'           => '/v1/coupons/{couponId}/meta/{field}/push',
 			'params'         => array('couponId', 'field', ),
 		),
 		'increaseMetafield' => array(
@@ -44,11 +44,11 @@ class Coupon {
 			'path'           => '/v1/coupons/{couponId}/meta/{field}/inc',
 			'params'         => array('couponId', 'field', ),
 		),
-		'pushToMetafield' => array(
+		'pullFromMetafield' => array(
 			'modelName'      => 'Coupon',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/coupons/{couponId}/meta/{field}/push',
+			'path'           => '/v1/coupons/{couponId}/meta/{field}/pull',
 			'params'         => array('couponId', 'field', ),
 		),
 		'deleteMetafield' => array(

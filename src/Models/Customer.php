@@ -164,13 +164,6 @@ class Customer {
 			'path'           => '/v1/customers/{customerId}/verified',
 			'params'         => array('customerId', ),
 		),
-		'increaseMetafield' => array(
-			'modelName'      => 'Customer',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/customers/{customerId}/meta/{field}/inc',
-			'params'         => array('customerId', 'field', ),
-		),
 		'pushToMetafield' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'pushToMetafield',
@@ -183,6 +176,13 @@ class Customer {
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/customers/{customerId}/meta/{field}/pull',
+			'params'         => array('customerId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/customers/{customerId}/meta/{field}/inc',
 			'params'         => array('customerId', 'field', ),
 		),
 		'updateMe' => array(
@@ -206,18 +206,18 @@ class Customer {
 			'path'           => '/v1/me/credentials',
 			'params'         => array(),
 		),
-		'updateCredentials' => array(
-			'modelName'      => 'Customer',
-			'methodName'     => 'updateCredentials',
-			'httpMethod'     => 'PUT',
-			'path'           => '/v1/customers/{customerId}/credentials',
-			'params'         => array('customerId', ),
-		),
 		'resetPassword' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'resetPassword',
 			'httpMethod'     => 'PUT',
 			'path'           => '/v1/customers/{customerId}/password',
+			'params'         => array('customerId', ),
+		),
+		'updateCredentials' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'updateCredentials',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/customers/{customerId}/credentials',
 			'params'         => array('customerId', ),
 		),
 		'deleteMe' => array(
