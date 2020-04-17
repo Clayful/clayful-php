@@ -30,12 +30,12 @@ class Brand {
 			'path'           => '/v1/brands/{brandId}',
 			'params'         => array('brandId', ),
 		),
-		'pullFromMetafield' => array(
+		'create' => array(
 			'modelName'      => 'Brand',
-			'methodName'     => 'pullFromMetafield',
+			'methodName'     => 'create',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/brands/{brandId}/meta/{field}/pull',
-			'params'         => array('brandId', 'field', ),
+			'path'           => '/v1/brands',
+			'params'         => array(),
 		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Brand',
@@ -44,12 +44,33 @@ class Brand {
 			'path'           => '/v1/brands/{brandId}/meta/{field}/inc',
 			'params'         => array('brandId', 'field', ),
 		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Brand',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/brands/{brandId}/meta/{field}/pull',
+			'params'         => array('brandId', 'field', ),
+		),
 		'pushToMetafield' => array(
 			'modelName'      => 'Brand',
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/brands/{brandId}/meta/{field}/push',
 			'params'         => array('brandId', 'field', ),
+		),
+		'update' => array(
+			'modelName'      => 'Brand',
+			'methodName'     => 'update',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/brands/{brandId}',
+			'params'         => array('brandId', ),
+		),
+		'delete' => array(
+			'modelName'      => 'Brand',
+			'methodName'     => 'delete',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/brands/{brandId}',
+			'params'         => array('brandId', ),
 		),
 		'deleteMetafield' => array(
 			'modelName'      => 'Brand',

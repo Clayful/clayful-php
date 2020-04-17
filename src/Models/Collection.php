@@ -30,11 +30,18 @@ class Collection {
 			'path'           => '/v1/collections/{collectionId}',
 			'params'         => array('collectionId', ),
 		),
-		'pullFromMetafield' => array(
+		'create' => array(
 			'modelName'      => 'Collection',
-			'methodName'     => 'pullFromMetafield',
+			'methodName'     => 'create',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/collections/{collectionId}/meta/{field}/pull',
+			'path'           => '/v1/collections',
+			'params'         => array(),
+		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Collection',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/collections/{collectionId}/meta/{field}/push',
 			'params'         => array('collectionId', 'field', ),
 		),
 		'increaseMetafield' => array(
@@ -44,12 +51,26 @@ class Collection {
 			'path'           => '/v1/collections/{collectionId}/meta/{field}/inc',
 			'params'         => array('collectionId', 'field', ),
 		),
-		'pushToMetafield' => array(
+		'pullFromMetafield' => array(
 			'modelName'      => 'Collection',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/collections/{collectionId}/meta/{field}/push',
+			'path'           => '/v1/collections/{collectionId}/meta/{field}/pull',
 			'params'         => array('collectionId', 'field', ),
+		),
+		'update' => array(
+			'modelName'      => 'Collection',
+			'methodName'     => 'update',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/collections/{collectionId}',
+			'params'         => array('collectionId', ),
+		),
+		'delete' => array(
+			'modelName'      => 'Collection',
+			'methodName'     => 'delete',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/collections/{collectionId}',
+			'params'         => array('collectionId', ),
 		),
 		'deleteMetafield' => array(
 			'modelName'      => 'Collection',

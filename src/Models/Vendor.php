@@ -37,11 +37,11 @@ class Vendor {
 			'path'           => '/v1/vendors',
 			'params'         => array(),
 		),
-		'pullFromMetafield' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'Vendor',
-			'methodName'     => 'pullFromMetafield',
+			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/vendors/{vendorId}/meta/{field}/pull',
+			'path'           => '/v1/vendors/{vendorId}/meta/{field}/push',
 			'params'         => array('vendorId', 'field', ),
 		),
 		'increaseMetafield' => array(
@@ -51,11 +51,11 @@ class Vendor {
 			'path'           => '/v1/vendors/{vendorId}/meta/{field}/inc',
 			'params'         => array('vendorId', 'field', ),
 		),
-		'pushToMetafield' => array(
+		'pullFromMetafield' => array(
 			'modelName'      => 'Vendor',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/vendors/{vendorId}/meta/{field}/push',
+			'path'           => '/v1/vendors/{vendorId}/meta/{field}/pull',
 			'params'         => array('vendorId', 'field', ),
 		),
 		'update' => array(

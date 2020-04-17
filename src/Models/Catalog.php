@@ -37,18 +37,18 @@ class Catalog {
 			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/pull',
 			'params'         => array('catalogId', 'field', ),
 		),
-		'increaseMetafield' => array(
-			'modelName'      => 'Catalog',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/inc',
-			'params'         => array('catalogId', 'field', ),
-		),
 		'pushToMetafield' => array(
 			'modelName'      => 'Catalog',
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/push',
+			'params'         => array('catalogId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/inc',
 			'params'         => array('catalogId', 'field', ),
 		),
 		'deleteMetafield' => array(

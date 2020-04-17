@@ -150,18 +150,18 @@ class Customer {
 			'path'           => '/v1/customers/verifications/{channelSlug}',
 			'params'         => array('channelSlug', ),
 		),
-		'addCoupon' => array(
-			'modelName'      => 'Customer',
-			'methodName'     => 'addCoupon',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/customers/{customerId}/coupons',
-			'params'         => array('customerId', ),
-		),
 		'verify' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'verify',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/customers/{customerId}/verified',
+			'params'         => array('customerId', ),
+		),
+		'addCoupon' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'addCoupon',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/customers/{customerId}/coupons',
 			'params'         => array('customerId', ),
 		),
 		'pushToMetafield' => array(
@@ -171,18 +171,18 @@ class Customer {
 			'path'           => '/v1/customers/{customerId}/meta/{field}/push',
 			'params'         => array('customerId', 'field', ),
 		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'Customer',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/customers/{customerId}/meta/{field}/pull',
-			'params'         => array('customerId', 'field', ),
-		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/customers/{customerId}/meta/{field}/inc',
+			'params'         => array('customerId', 'field', ),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/customers/{customerId}/meta/{field}/pull',
 			'params'         => array('customerId', 'field', ),
 		),
 		'updateMe' => array(
@@ -206,18 +206,18 @@ class Customer {
 			'path'           => '/v1/me/credentials',
 			'params'         => array(),
 		),
-		'resetPassword' => array(
-			'modelName'      => 'Customer',
-			'methodName'     => 'resetPassword',
-			'httpMethod'     => 'PUT',
-			'path'           => '/v1/customers/{customerId}/password',
-			'params'         => array('customerId', ),
-		),
 		'updateCredentials' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'updateCredentials',
 			'httpMethod'     => 'PUT',
 			'path'           => '/v1/customers/{customerId}/credentials',
+			'params'         => array('customerId', ),
+		),
+		'resetPassword' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'resetPassword',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/customers/{customerId}/password',
 			'params'         => array('customerId', ),
 		),
 		'deleteMe' => array(

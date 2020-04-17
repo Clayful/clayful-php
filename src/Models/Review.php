@@ -95,13 +95,6 @@ class Review {
 			'params'         => array('reviewId', 'upDown', ),
 			'withoutPayload' => true,
 		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}/pull',
-			'params'         => array('reviewId', 'field', ),
-		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Review',
 			'methodName'     => 'increaseMetafield',
@@ -114,6 +107,13 @@ class Review {
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}/push',
+			'params'         => array('reviewId', 'field', ),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Review',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}/pull',
 			'params'         => array('reviewId', 'field', ),
 		),
 		'update' => array(
@@ -151,19 +151,19 @@ class Review {
 			'path'           => '/v1/me/products/reviews/{reviewId}/flags',
 			'params'         => array('reviewId', ),
 		),
-		'cancelFlag' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'cancelFlag',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/products/reviews/{reviewId}/flags/{customerId}',
-			'params'         => array('reviewId', 'customerId', ),
-		),
 		'deleteMetafield' => array(
 			'modelName'      => 'Review',
 			'methodName'     => 'deleteMetafield',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}',
 			'params'         => array('reviewId', 'field', ),
+		),
+		'cancelFlag' => array(
+			'modelName'      => 'Review',
+			'methodName'     => 'cancelFlag',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/products/reviews/{reviewId}/flags/{customerId}',
+			'params'         => array('reviewId', 'customerId', ),
 		),
 		'cancelHelpedForMe' => array(
 			'modelName'      => 'Review',

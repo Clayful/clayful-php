@@ -59,18 +59,18 @@ class ReviewComment {
 			'params'         => array('reviewCommentId', ),
 			'withoutPayload' => true,
 		),
-		'increaseMetafield' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/inc',
-			'params'         => array('reviewCommentId', 'field', ),
-		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'ReviewComment',
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/pull',
+			'params'         => array('reviewCommentId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'ReviewComment',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/inc',
 			'params'         => array('reviewCommentId', 'field', ),
 		),
 		'pushToMetafield' => array(
@@ -115,19 +115,19 @@ class ReviewComment {
 			'path'           => '/v1/me/products/reviews/comments/{reviewCommentId}/flags',
 			'params'         => array('reviewCommentId', ),
 		),
-		'cancelFlag' => array(
-			'modelName'      => 'ReviewComment',
-			'methodName'     => 'cancelFlag',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/flags/{customerId}',
-			'params'         => array('reviewCommentId', 'customerId', ),
-		),
 		'deleteMetafield' => array(
 			'modelName'      => 'ReviewComment',
 			'methodName'     => 'deleteMetafield',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}',
 			'params'         => array('reviewCommentId', 'field', ),
+		),
+		'cancelFlag' => array(
+			'modelName'      => 'ReviewComment',
+			'methodName'     => 'cancelFlag',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/flags/{customerId}',
+			'params'         => array('reviewCommentId', 'customerId', ),
 		),
 		'query' => array(
 			'modelName'      => 'ReviewComment',

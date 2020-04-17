@@ -107,6 +107,13 @@ class WishList {
 			'path'           => '/v1/me/wishlists/{wishListId}/items',
 			'params'         => array('wishListId', ),
 		),
+		'increaseMetafield' => array(
+			'modelName'      => 'WishList',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/inc',
+			'params'         => array('wishListId', 'field', ),
+		),
 		'pushToMetafield' => array(
 			'modelName'      => 'WishList',
 			'methodName'     => 'pushToMetafield',
@@ -119,13 +126,6 @@ class WishList {
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/pull',
-			'params'         => array('wishListId', 'field', ),
-		),
-		'increaseMetafield' => array(
-			'modelName'      => 'WishList',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/wishlists/{wishListId}/meta/{field}/inc',
 			'params'         => array('wishListId', 'field', ),
 		),
 		'update' => array(

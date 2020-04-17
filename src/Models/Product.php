@@ -44,12 +44,12 @@ class Product {
 			'path'           => '/v1/products/{productId}/variants',
 			'params'         => array('productId', ),
 		),
-		'increaseMetafield' => array(
+		'createVariation' => array(
 			'modelName'      => 'Product',
-			'methodName'     => 'increaseMetafield',
+			'methodName'     => 'createVariation',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/{productId}/meta/{field}/inc',
-			'params'         => array('productId', 'field', ),
+			'path'           => '/v1/products/{productId}/options/{optionId}/variations',
+			'params'         => array('productId', 'optionId', ),
 		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Product',
@@ -58,18 +58,18 @@ class Product {
 			'path'           => '/v1/products/{productId}/meta/{field}/pull',
 			'params'         => array('productId', 'field', ),
 		),
-		'createVariation' => array(
-			'modelName'      => 'Product',
-			'methodName'     => 'createVariation',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/{productId}/options/{optionId}/variations',
-			'params'         => array('productId', 'optionId', ),
-		),
 		'pushToMetafield' => array(
 			'modelName'      => 'Product',
 			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/products/{productId}/meta/{field}/push',
+			'params'         => array('productId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Product',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/products/{productId}/meta/{field}/inc',
 			'params'         => array('productId', 'field', ),
 		),
 		'update' => array(
