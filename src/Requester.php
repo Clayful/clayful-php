@@ -1,8 +1,6 @@
 <?php
 namespace Clayful;
 
-require 'vendor/autoload.php';
-
 use GuzzleHttp\Client;
 use Clayful\ClayfulResponse;
 use Clayful\ClayfulException;
