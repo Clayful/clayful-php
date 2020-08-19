@@ -44,12 +44,12 @@ class Product {
 			'path'           => '/v1/products/{productId}/variants',
 			'params'         => array('productId', ),
 		),
-		'createVariation' => array(
+		'markAsCensored' => array(
 			'modelName'      => 'Product',
-			'methodName'     => 'createVariation',
+			'methodName'     => 'markAsCensored',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/{productId}/options/{optionId}/variations',
-			'params'         => array('productId', 'optionId', ),
+			'path'           => '/v1/products/{productId}/censored',
+			'params'         => array('productId', ),
 		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Product',
@@ -58,18 +58,25 @@ class Product {
 			'path'           => '/v1/products/{productId}/meta/{field}/pull',
 			'params'         => array('productId', 'field', ),
 		),
-		'pushToMetafield' => array(
+		'createVariation' => array(
 			'modelName'      => 'Product',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'createVariation',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/{productId}/meta/{field}/push',
-			'params'         => array('productId', 'field', ),
+			'path'           => '/v1/products/{productId}/options/{optionId}/variations',
+			'params'         => array('productId', 'optionId', ),
 		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Product',
 			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/products/{productId}/meta/{field}/inc',
+			'params'         => array('productId', 'field', ),
+		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Product',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/products/{productId}/meta/{field}/push',
 			'params'         => array('productId', 'field', ),
 		),
 		'update' => array(
@@ -105,6 +112,13 @@ class Product {
 			'methodName'     => 'delete',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/products/{productId}',
+			'params'         => array('productId', ),
+		),
+		'markAsUncensored' => array(
+			'modelName'      => 'Product',
+			'methodName'     => 'markAsUncensored',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/products/{productId}/censored',
 			'params'         => array('productId', ),
 		),
 		'deleteMetafield' => array(

@@ -164,18 +164,25 @@ class Customer {
 			'path'           => '/v1/customers/{customerId}/coupons',
 			'params'         => array('customerId', ),
 		),
-		'pushToMetafield' => array(
+		'recoverCredential' => array(
 			'modelName'      => 'Customer',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'recoverCredential',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/customers/{customerId}/meta/{field}/push',
-			'params'         => array('customerId', 'field', ),
+			'path'           => '/v1/customers/credentials/{credentialField}/recoveries/{recoveryMethod}',
+			'params'         => array('credentialField', 'recoveryMethod', ),
 		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/customers/{customerId}/meta/{field}/inc',
+			'params'         => array('customerId', 'field', ),
+		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/customers/{customerId}/meta/{field}/push',
 			'params'         => array('customerId', 'field', ),
 		),
 		'pullFromMetafield' => array(
@@ -206,18 +213,18 @@ class Customer {
 			'path'           => '/v1/me/credentials',
 			'params'         => array(),
 		),
-		'updateCredentials' => array(
-			'modelName'      => 'Customer',
-			'methodName'     => 'updateCredentials',
-			'httpMethod'     => 'PUT',
-			'path'           => '/v1/customers/{customerId}/credentials',
-			'params'         => array('customerId', ),
-		),
 		'resetPassword' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'resetPassword',
 			'httpMethod'     => 'PUT',
 			'path'           => '/v1/customers/{customerId}/password',
+			'params'         => array('customerId', ),
+		),
+		'updateCredentials' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'updateCredentials',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/customers/{customerId}/credentials',
 			'params'         => array('customerId', ),
 		),
 		'deleteMe' => array(

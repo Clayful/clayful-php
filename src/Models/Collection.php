@@ -44,18 +44,18 @@ class Collection {
 			'path'           => '/v1/collections/{collectionId}/meta/{field}/push',
 			'params'         => array('collectionId', 'field', ),
 		),
-		'increaseMetafield' => array(
-			'modelName'      => 'Collection',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/collections/{collectionId}/meta/{field}/inc',
-			'params'         => array('collectionId', 'field', ),
-		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Collection',
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/collections/{collectionId}/meta/{field}/pull',
+			'params'         => array('collectionId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Collection',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/collections/{collectionId}/meta/{field}/inc',
 			'params'         => array('collectionId', 'field', ),
 		),
 		'update' => array(

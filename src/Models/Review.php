@@ -95,13 +95,6 @@ class Review {
 			'params'         => array('reviewId', 'upDown', ),
 			'withoutPayload' => true,
 		),
-		'increaseMetafield' => array(
-			'modelName'      => 'Review',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}/inc',
-			'params'         => array('reviewId', 'field', ),
-		),
 		'pushToMetafield' => array(
 			'modelName'      => 'Review',
 			'methodName'     => 'pushToMetafield',
@@ -114,6 +107,13 @@ class Review {
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}/pull',
+			'params'         => array('reviewId', 'field', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Review',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/products/reviews/{reviewId}/meta/{field}/inc',
 			'params'         => array('reviewId', 'field', ),
 		),
 		'update' => array(

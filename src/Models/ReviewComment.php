@@ -59,11 +59,11 @@ class ReviewComment {
 			'params'         => array('reviewCommentId', ),
 			'withoutPayload' => true,
 		),
-		'pullFromMetafield' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'ReviewComment',
-			'methodName'     => 'pullFromMetafield',
+			'methodName'     => 'pushToMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/pull',
+			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/push',
 			'params'         => array('reviewCommentId', 'field', ),
 		),
 		'increaseMetafield' => array(
@@ -73,11 +73,11 @@ class ReviewComment {
 			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/inc',
 			'params'         => array('reviewCommentId', 'field', ),
 		),
-		'pushToMetafield' => array(
+		'pullFromMetafield' => array(
 			'modelName'      => 'ReviewComment',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/push',
+			'path'           => '/v1/products/reviews/comments/{reviewCommentId}/meta/{field}/pull',
 			'params'         => array('reviewCommentId', 'field', ),
 		),
 		'update' => array(

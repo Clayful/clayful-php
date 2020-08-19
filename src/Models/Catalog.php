@@ -30,6 +30,20 @@ class Catalog {
 			'path'           => '/v1/catalogs/{catalogId}',
 			'params'         => array('catalogId', ),
 		),
+		'create' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'create',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/catalogs',
+			'params'         => array(),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/inc',
+			'params'         => array('catalogId', 'field', ),
+		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Catalog',
 			'methodName'     => 'pullFromMetafield',
@@ -44,12 +58,19 @@ class Catalog {
 			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/push',
 			'params'         => array('catalogId', 'field', ),
 		),
-		'increaseMetafield' => array(
+		'update' => array(
 			'modelName'      => 'Catalog',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/inc',
-			'params'         => array('catalogId', 'field', ),
+			'methodName'     => 'update',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/catalogs/{catalogId}',
+			'params'         => array('catalogId', ),
+		),
+		'delete' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'delete',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/catalogs/{catalogId}',
+			'params'         => array('catalogId', ),
 		),
 		'deleteMetafield' => array(
 			'modelName'      => 'Catalog',

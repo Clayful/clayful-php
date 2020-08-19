@@ -16,18 +16,18 @@ class Store {
 			'path'           => '/v1/store',
 			'params'         => array(),
 		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'Store',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/store/meta/{field}/pull',
-			'params'         => array('field', ),
-		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Store',
 			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/store/meta/{field}/inc',
+			'params'         => array('field', ),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Store',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/store/meta/{field}/pull',
 			'params'         => array('field', ),
 		),
 		'pushToMetafield' => array(
