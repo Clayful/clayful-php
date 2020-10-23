@@ -79,19 +79,19 @@ class Customer {
 			'path'           => '/v1/{voteModel}/{voteModelId}/flags/customers',
 			'params'         => array('voteModel', 'voteModelId', ),
 		),
-		'listByFlagVotes' => array(
-			'modelName'      => 'Customer',
-			'methodName'     => 'listByFlagVotes',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/{voteModel}/{voteModelId}/flags/customers',
-			'params'         => array('voteModel', 'voteModelId', ),
-		),
 		'listByHelpVotes' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'listByHelpVotes',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/{voteModel}/{voteModelId}/helped/{upDown}/customers',
 			'params'         => array('voteModel', 'voteModelId', 'upDown', ),
+		),
+		'listByFlagVotes' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'listByFlagVotes',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/{voteModel}/{voteModelId}/flags/customers',
+			'params'         => array('voteModel', 'voteModelId', ),
 		),
 		'listByHelpVotes' => array(
 			'modelName'      => 'Customer',
@@ -134,7 +134,6 @@ class Customer {
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/customers/auth/{vendor}',
 			'params'         => array('vendor', ),
-			'withoutPayload' => true,
 		),
 		'requestVerificationEmail' => array(
 			'modelName'      => 'Customer',
@@ -150,18 +149,18 @@ class Customer {
 			'path'           => '/v1/customers/verifications/{channelSlug}',
 			'params'         => array('channelSlug', ),
 		),
-		'verify' => array(
-			'modelName'      => 'Customer',
-			'methodName'     => 'verify',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/customers/{customerId}/verified',
-			'params'         => array('customerId', ),
-		),
 		'addCoupon' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'addCoupon',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/customers/{customerId}/coupons',
+			'params'         => array('customerId', ),
+		),
+		'verify' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'verify',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/customers/{customerId}/verified',
 			'params'         => array('customerId', ),
 		),
 		'recoverCredential' => array(
@@ -178,18 +177,18 @@ class Customer {
 			'path'           => '/v1/customers/{customerId}/meta/{field}/inc',
 			'params'         => array('customerId', 'field', ),
 		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Customer',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/customers/{customerId}/meta/{field}/push',
-			'params'         => array('customerId', 'field', ),
-		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/customers/{customerId}/meta/{field}/pull',
+			'params'         => array('customerId', 'field', ),
+		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/customers/{customerId}/meta/{field}/push',
 			'params'         => array('customerId', 'field', ),
 		),
 		'updateMe' => array(
@@ -290,19 +289,19 @@ class Customer {
 			'path'           => '/v1/{voteModel}/{voteModelId}/flags/customers',
 			'params'         => array('voteModel', 'voteModelId', ),
 		),
-		'queryByFlagVotes' => array(
-			'modelName'      => 'Customer',
-			'methodName'     => 'queryByFlagVotes',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/{voteModel}/{voteModelId}/flags/customers',
-			'params'         => array('voteModel', 'voteModelId', ),
-		),
 		'queryByHelpVotes' => array(
 			'modelName'      => 'Customer',
 			'methodName'     => 'queryByHelpVotes',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/{voteModel}/{voteModelId}/helped/{upDown}/customers',
 			'params'         => array('voteModel', 'voteModelId', 'upDown', ),
+		),
+		'queryByFlagVotes' => array(
+			'modelName'      => 'Customer',
+			'methodName'     => 'queryByFlagVotes',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/{voteModel}/{voteModelId}/flags/customers',
+			'params'         => array('voteModel', 'voteModelId', ),
 		),
 		'queryByHelpVotes' => array(
 			'modelName'      => 'Customer',

@@ -37,6 +37,13 @@ class Catalog {
 			'path'           => '/v1/catalogs',
 			'params'         => array(),
 		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/push',
+			'params'         => array('catalogId', 'field', ),
+		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Catalog',
 			'methodName'     => 'increaseMetafield',
@@ -49,13 +56,6 @@ class Catalog {
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/pull',
-			'params'         => array('catalogId', 'field', ),
-		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Catalog',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/push',
 			'params'         => array('catalogId', 'field', ),
 		),
 		'update' => array(

@@ -51,13 +51,6 @@ class Product {
 			'path'           => '/v1/products/{productId}/censored',
 			'params'         => array('productId', ),
 		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'Product',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/products/{productId}/meta/{field}/pull',
-			'params'         => array('productId', 'field', ),
-		),
 		'createVariation' => array(
 			'modelName'      => 'Product',
 			'methodName'     => 'createVariation',
@@ -70,6 +63,13 @@ class Product {
 			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/products/{productId}/meta/{field}/inc',
+			'params'         => array('productId', 'field', ),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Product',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/products/{productId}/meta/{field}/pull',
 			'params'         => array('productId', 'field', ),
 		),
 		'pushToMetafield' => array(
@@ -121,19 +121,19 @@ class Product {
 			'path'           => '/v1/products/{productId}/censored',
 			'params'         => array('productId', ),
 		),
-		'deleteMetafield' => array(
-			'modelName'      => 'Product',
-			'methodName'     => 'deleteMetafield',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/products/{productId}/meta/{field}',
-			'params'         => array('productId', 'field', ),
-		),
 		'deleteVariant' => array(
 			'modelName'      => 'Product',
 			'methodName'     => 'deleteVariant',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/products/{productId}/variants/{variantId}',
 			'params'         => array('productId', 'variantId', ),
+		),
+		'deleteMetafield' => array(
+			'modelName'      => 'Product',
+			'methodName'     => 'deleteMetafield',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/products/{productId}/meta/{field}',
+			'params'         => array('productId', 'field', ),
 		),
 		'deleteVariation' => array(
 			'modelName'      => 'Product',

@@ -80,6 +80,13 @@ class Order {
 			'params'         => array('orderId', ),
 			'withoutPayload' => true,
 		),
+		'createFulfillment' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'createFulfillment',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/orders/{orderId}/fulfillments',
+			'params'         => array('orderId', ),
+		),
 		'syncInventory' => array(
 			'modelName'      => 'Order',
 			'methodName'     => 'syncInventory',
@@ -103,13 +110,6 @@ class Order {
 			'path'           => '/v1/orders/{orderId}/refunds',
 			'params'         => array('orderId', ),
 		),
-		'authenticate' => array(
-			'modelName'      => 'Order',
-			'methodName'     => 'authenticate',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/orders/{orderId}/auth',
-			'params'         => array('orderId', ),
-		),
 		'cancel' => array(
 			'modelName'      => 'Order',
 			'methodName'     => 'cancel',
@@ -117,18 +117,11 @@ class Order {
 			'path'           => '/v1/orders/{orderId}/cancellation',
 			'params'         => array('orderId', ),
 		),
-		'createFulfillment' => array(
+		'authenticate' => array(
 			'modelName'      => 'Order',
-			'methodName'     => 'createFulfillment',
+			'methodName'     => 'authenticate',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/orders/{orderId}/fulfillments',
-			'params'         => array('orderId', ),
-		),
-		'requestRefundForMe' => array(
-			'modelName'      => 'Order',
-			'methodName'     => 'requestRefundForMe',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/me/orders/{orderId}/refunds',
+			'path'           => '/v1/orders/{orderId}/auth',
 			'params'         => array('orderId', ),
 		),
 		'markAsReceivedForMe' => array(
@@ -139,19 +132,19 @@ class Order {
 			'params'         => array('orderId', ),
 			'withoutPayload' => true,
 		),
+		'requestRefundForMe' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'requestRefundForMe',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/me/orders/{orderId}/refunds',
+			'params'         => array('orderId', ),
+		),
 		'cancelForMe' => array(
 			'modelName'      => 'Order',
 			'methodName'     => 'cancelForMe',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/me/orders/{orderId}/cancellation',
 			'params'         => array('orderId', ),
-		),
-		'checkTicket' => array(
-			'modelName'      => 'Order',
-			'methodName'     => 'checkTicket',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/orders/tickets/{code}/validity',
-			'params'         => array('code', ),
 		),
 		'useTicket' => array(
 			'modelName'      => 'Order',
@@ -160,6 +153,27 @@ class Order {
 			'path'           => '/v1/orders/tickets/{code}/used',
 			'params'         => array('code', ),
 			'withoutPayload' => true,
+		),
+		'checkTicket' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'checkTicket',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/orders/tickets/{code}/validity',
+			'params'         => array('code', ),
+		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/orders/{orderId}/meta/{field}/push',
+			'params'         => array('orderId', 'field', ),
+		),
+		'registerPaymentMethod' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'registerPaymentMethod',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/orders/{orderId}/transactions/payments/methods',
+			'params'         => array('orderId', ),
 		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Order',
@@ -175,26 +189,12 @@ class Order {
 			'path'           => '/v1/orders/{orderId}/refunds/{refundId}/restock',
 			'params'         => array('orderId', 'refundId', ),
 		),
-		'cancelRefund' => array(
-			'modelName'      => 'Order',
-			'methodName'     => 'cancelRefund',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/orders/{orderId}/refunds/{refundId}/cancellation',
-			'params'         => array('orderId', 'refundId', ),
-		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Order',
 			'methodName'     => 'pullFromMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/orders/{orderId}/meta/{field}/pull',
 			'params'         => array('orderId', 'field', ),
-		),
-		'registerPaymentMethod' => array(
-			'modelName'      => 'Order',
-			'methodName'     => 'registerPaymentMethod',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/orders/{orderId}/transactions/payments/methods',
-			'params'         => array('orderId', ),
 		),
 		'acceptRefund' => array(
 			'modelName'      => 'Order',
@@ -204,12 +204,12 @@ class Order {
 			'params'         => array('orderId', 'refundId', ),
 			'withoutPayload' => true,
 		),
-		'pushToMetafield' => array(
+		'cancelRefund' => array(
 			'modelName'      => 'Order',
-			'methodName'     => 'pushToMetafield',
+			'methodName'     => 'cancelRefund',
 			'httpMethod'     => 'POST',
-			'path'           => '/v1/orders/{orderId}/meta/{field}/push',
-			'params'         => array('orderId', 'field', ),
+			'path'           => '/v1/orders/{orderId}/refunds/{refundId}/cancellation',
+			'params'         => array('orderId', 'refundId', ),
 		),
 		'cancelRefundForMe' => array(
 			'modelName'      => 'Order',
@@ -218,20 +218,20 @@ class Order {
 			'path'           => '/v1/me/orders/{orderId}/refunds/{refundId}/cancellation',
 			'params'         => array('orderId', 'refundId', ),
 		),
-		'restockAllRefundItems' => array(
-			'modelName'      => 'Order',
-			'methodName'     => 'restockAllRefundItems',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/orders/{orderId}/refunds/{refundId}/restock/all',
-			'params'         => array('orderId', 'refundId', ),
-			'withoutPayload' => true,
-		),
 		'createDownloadUrl' => array(
 			'modelName'      => 'Order',
 			'methodName'     => 'createDownloadUrl',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/orders/{orderId}/items/{itemId}/download/url',
 			'params'         => array('orderId', 'itemId', ),
+			'withoutPayload' => true,
+		),
+		'restockAllRefundItems' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'restockAllRefundItems',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/orders/{orderId}/refunds/{refundId}/restock/all',
+			'params'         => array('orderId', 'refundId', ),
 			'withoutPayload' => true,
 		),
 		'createDownloadUrlForMe' => array(
@@ -256,18 +256,18 @@ class Order {
 			'path'           => '/v1/me/orders/{orderId}',
 			'params'         => array('orderId', ),
 		),
-		'updateCancellation' => array(
-			'modelName'      => 'Order',
-			'methodName'     => 'updateCancellation',
-			'httpMethod'     => 'PUT',
-			'path'           => '/v1/orders/{orderId}/cancellation',
-			'params'         => array('orderId', ),
-		),
 		'updateTransactions' => array(
 			'modelName'      => 'Order',
 			'methodName'     => 'updateTransactions',
 			'httpMethod'     => 'PUT',
 			'path'           => '/v1/orders/{orderId}/transactions',
+			'params'         => array('orderId', ),
+		),
+		'updateCancellation' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'updateCancellation',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/orders/{orderId}/cancellation',
 			'params'         => array('orderId', ),
 		),
 		'updateCancellationForMe' => array(
@@ -285,12 +285,12 @@ class Order {
 			'params'         => array('orderId', ),
 			'withoutPayload' => true,
 		),
-		'updateRefund' => array(
+		'updateFulfillment' => array(
 			'modelName'      => 'Order',
-			'methodName'     => 'updateRefund',
+			'methodName'     => 'updateFulfillment',
 			'httpMethod'     => 'PUT',
-			'path'           => '/v1/orders/{orderId}/refunds/{refundId}',
-			'params'         => array('orderId', 'refundId', ),
+			'path'           => '/v1/orders/{orderId}/fulfillments/{fulfillmentId}',
+			'params'         => array('orderId', 'fulfillmentId', ),
 		),
 		'updateItem' => array(
 			'modelName'      => 'Order',
@@ -299,12 +299,12 @@ class Order {
 			'path'           => '/v1/orders/{orderId}/items/{itemId}',
 			'params'         => array('orderId', 'itemId', ),
 		),
-		'updateFulfillment' => array(
+		'updateRefund' => array(
 			'modelName'      => 'Order',
-			'methodName'     => 'updateFulfillment',
+			'methodName'     => 'updateRefund',
 			'httpMethod'     => 'PUT',
-			'path'           => '/v1/orders/{orderId}/fulfillments/{fulfillmentId}',
-			'params'         => array('orderId', 'fulfillmentId', ),
+			'path'           => '/v1/orders/{orderId}/refunds/{refundId}',
+			'params'         => array('orderId', 'refundId', ),
 		),
 		'updateRefundForMe' => array(
 			'modelName'      => 'Order',
@@ -334,18 +334,18 @@ class Order {
 			'path'           => '/v1/orders/{orderId}',
 			'params'         => array('orderId', ),
 		),
-		'markAsUndone' => array(
-			'modelName'      => 'Order',
-			'methodName'     => 'markAsUndone',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/orders/{orderId}/done',
-			'params'         => array('orderId', ),
-		),
 		'markAsNotReceived' => array(
 			'modelName'      => 'Order',
 			'methodName'     => 'markAsNotReceived',
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/orders/{orderId}/received',
+			'params'         => array('orderId', ),
+		),
+		'markAsUndone' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'markAsUndone',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/orders/{orderId}/done',
 			'params'         => array('orderId', ),
 		),
 		'markAsNotReceivedForMe' => array(
@@ -354,6 +354,13 @@ class Order {
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/me/orders/{orderId}/received',
 			'params'         => array('orderId', ),
+		),
+		'deleteMetafield' => array(
+			'modelName'      => 'Order',
+			'methodName'     => 'deleteMetafield',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/orders/{orderId}/meta/{field}',
+			'params'         => array('orderId', 'field', ),
 		),
 		'deleteFulfillment' => array(
 			'modelName'      => 'Order',
@@ -368,13 +375,6 @@ class Order {
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/orders/{orderId}/refunds/{refundId}',
 			'params'         => array('orderId', 'refundId', ),
-		),
-		'deleteMetafield' => array(
-			'modelName'      => 'Order',
-			'methodName'     => 'deleteMetafield',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/orders/{orderId}/meta/{field}',
-			'params'         => array('orderId', 'field', ),
 		),
 		'unacceptRefund' => array(
 			'modelName'      => 'Order',

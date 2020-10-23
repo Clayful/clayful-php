@@ -37,18 +37,18 @@ class Coupon {
 			'path'           => '/v1/coupons/{couponId}/meta/{field}/pull',
 			'params'         => array('couponId', 'field', ),
 		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Coupon',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/coupons/{couponId}/meta/{field}/push',
-			'params'         => array('couponId', 'field', ),
-		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Coupon',
 			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/coupons/{couponId}/meta/{field}/inc',
+			'params'         => array('couponId', 'field', ),
+		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Coupon',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/coupons/{couponId}/meta/{field}/push',
 			'params'         => array('couponId', 'field', ),
 		),
 		'deleteMetafield' => array(

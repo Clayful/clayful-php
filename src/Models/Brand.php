@@ -37,13 +37,6 @@ class Brand {
 			'path'           => '/v1/brands',
 			'params'         => array(),
 		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Brand',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/brands/{brandId}/meta/{field}/push',
-			'params'         => array('brandId', 'field', ),
-		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Brand',
 			'methodName'     => 'pullFromMetafield',
@@ -56,6 +49,13 @@ class Brand {
 			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/brands/{brandId}/meta/{field}/inc',
+			'params'         => array('brandId', 'field', ),
+		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Brand',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/brands/{brandId}/meta/{field}/push',
 			'params'         => array('brandId', 'field', ),
 		),
 		'update' => array(
