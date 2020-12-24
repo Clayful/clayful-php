@@ -20,8 +20,22 @@
         "phpunit/phpunit": "5.5.*"
     },
     "autoload": {
-        "psr-4": {
-            "Clayful\\": ["src/", "src/Models/"]
+        "psr-0": {
+            "Clayful\\": ["src/", "src/Models/"],
+            "Clayful\\Laravel": ["src/Laravel"]
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Clayful\\Laravel\\ServiceProvider"
+            ],
+            "aliases": {
+                "Clayful": "Clayful\\Laravel\\Facade\\Clayful"
+            },
+            "dont-discover": [
+                "*"
+            ]
         }
     }
 }
