@@ -20,7 +20,7 @@
         "phpunit/phpunit": "5.5.*"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Clayful\\": ["src/", "src/Models/"],
             "Clayful\\Laravel": ["src/Laravel"]
         }
@@ -31,7 +31,7 @@
                 "Clayful\\Laravel\\ServiceProvider"
             ],
             "aliases": {
-                "Clayful": "Clayful\\Laravel\\Facade\\Clayful"
+                "Clayful": "Clayful\\Laravel\\Facade\\ClayfulFacade"
             },
             "dont-discover": [
                 "*"

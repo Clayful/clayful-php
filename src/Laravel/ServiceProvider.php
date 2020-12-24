@@ -2,7 +2,7 @@
 
 namespace Clayful\Laravel;
 
-use Illuminate\Support\BaseServiceProvider;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {

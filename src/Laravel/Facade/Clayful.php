@@ -2,16 +2,16 @@
 
 namespace Clayful\Laravel\Facade;
 
-use Clayful as ClayfulBase;
+use Clayful\Clayful as ClayfulBase;
 use Exception;
 
-class Clayful
+class ClayfulFacade
 {
     public static function request($modelName = null, $methodName = null, ...$arguments)
     {
-        ClayfulBase::config(['client' => config('clayful.token')]);
+        Clayful::config(['client' => config('clayful.token')]);
 
-        $model = "ClayfulBase\\{$modelName}";
+        $model = "Clayful\\{$modelName}";
 
         if (!$modelName && !$methodName) {
             throw new Exception('Missing arguments. modelName or methodName is required.');
