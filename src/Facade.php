@@ -1,15 +1,15 @@
 <?php
 
-namespace Clayful\Laravel\Facade;
+namespace Clayful;
 
 use Clayful\Clayful as ClayfulBase;
 use Exception;
 
-class ClayfulFacade
+class Facade
 {
     public static function request($modelName = null, $methodName = null, ...$arguments)
     {
-        Clayful::config(['client' => config('clayful.token')]);
+        ClayfulBase::config(['client' => config('clayful.token')]);
 
         $model = "Clayful\\{$modelName}";
 
