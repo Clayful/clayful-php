@@ -25,10 +25,6 @@ class Facade
             throw new Exception("{$methodName} method not exists in the {$modelName} model.");
         }
 
-        if (in_array($methodName, ['get', 'create', 'update', 'delete', 'list', 'count', 'query'])) {
-            return $model::$methodName(...$arguments);
-        }
-
-        throw new Exception("{$methodName} method not allowed.");
+        return $model::$methodName(...$arguments);        
     }
 }
