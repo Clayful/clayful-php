@@ -1,7 +1,7 @@
 {
     "name": "clayful/clayful",
     "description": "PHP SDK for Clayful API",
-    "version": "2.4.1",
+    "version": "2.5.0",
     "type": "library",
     "keywords": ["eCommerce", "clayful"],
     "homepage": "https://github.com/Clayful/clayful-php",

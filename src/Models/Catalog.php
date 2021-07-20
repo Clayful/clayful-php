@@ -9,13 +9,6 @@ class Catalog {
 	public static $path = 'catalogs';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'Catalog',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/catalogs',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'Catalog',
 			'methodName'     => 'count',
@@ -23,47 +16,12 @@ class Catalog {
 			'path'           => '/v1/catalogs/count',
 			'params'         => array(),
 		),
-		'get' => array(
-			'modelName'      => 'Catalog',
-			'methodName'     => 'get',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/catalogs/{catalogId}',
-			'params'         => array('catalogId', ),
-		),
 		'create' => array(
 			'modelName'      => 'Catalog',
 			'methodName'     => 'create',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/catalogs',
 			'params'         => array(),
-		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Catalog',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/push',
-			'params'         => array('catalogId', 'field', ),
-		),
-		'increaseMetafield' => array(
-			'modelName'      => 'Catalog',
-			'methodName'     => 'increaseMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/inc',
-			'params'         => array('catalogId', 'field', ),
-		),
-		'pullFromMetafield' => array(
-			'modelName'      => 'Catalog',
-			'methodName'     => 'pullFromMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/pull',
-			'params'         => array('catalogId', 'field', ),
-		),
-		'update' => array(
-			'modelName'      => 'Catalog',
-			'methodName'     => 'update',
-			'httpMethod'     => 'PUT',
-			'path'           => '/v1/catalogs/{catalogId}',
-			'params'         => array('catalogId', ),
 		),
 		'delete' => array(
 			'modelName'      => 'Catalog',
@@ -78,6 +36,48 @@ class Catalog {
 			'httpMethod'     => 'DELETE',
 			'path'           => '/v1/catalogs/{catalogId}/meta/{field}',
 			'params'         => array('catalogId', 'field', ),
+		),
+		'get' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'get',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/catalogs/{catalogId}',
+			'params'         => array('catalogId', ),
+		),
+		'increaseMetafield' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'increaseMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/inc',
+			'params'         => array('catalogId', 'field', ),
+		),
+		'list' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/catalogs',
+			'params'         => array(),
+		),
+		'pullFromMetafield' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'pullFromMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/pull',
+			'params'         => array('catalogId', 'field', ),
+		),
+		'pushToMetafield' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/catalogs/{catalogId}/meta/{field}/push',
+			'params'         => array('catalogId', 'field', ),
+		),
+		'update' => array(
+			'modelName'      => 'Catalog',
+			'methodName'     => 'update',
+			'httpMethod'     => 'PUT',
+			'path'           => '/v1/catalogs/{catalogId}',
+			'params'         => array('catalogId', ),
 		),
 		'query' => array(
 			'modelName'      => 'Catalog',

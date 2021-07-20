@@ -9,13 +9,6 @@ class TaxCategory {
 	public static $path = 'taxes/categories';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'TaxCategory',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/taxes/categories',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'TaxCategory',
 			'methodName'     => 'count',
@@ -29,6 +22,13 @@ class TaxCategory {
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/taxes/categories/{taxCategoryId}',
 			'params'         => array('taxCategoryId', ),
+		),
+		'list' => array(
+			'modelName'      => 'TaxCategory',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/taxes/categories',
+			'params'         => array(),
 		),
 		'query' => array(
 			'modelName'      => 'TaxCategory',

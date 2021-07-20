@@ -9,26 +9,12 @@ class Downloadable {
 	public static $path = 'downloadables';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'Downloadable',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/downloadables',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'Downloadable',
 			'methodName'     => 'count',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/downloadables/count',
 			'params'         => array(),
-		),
-		'get' => array(
-			'modelName'      => 'Downloadable',
-			'methodName'     => 'get',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/downloadables/{downloadableId}',
-			'params'         => array('downloadableId', ),
 		),
 		'createDownloadUrl' => array(
 			'modelName'      => 'Downloadable',
@@ -37,6 +23,20 @@ class Downloadable {
 			'path'           => '/v1/downloadables/{downloadableId}/url',
 			'params'         => array('downloadableId', ),
 			'withoutPayload' => true,
+		),
+		'get' => array(
+			'modelName'      => 'Downloadable',
+			'methodName'     => 'get',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/downloadables/{downloadableId}',
+			'params'         => array('downloadableId', ),
+		),
+		'list' => array(
+			'modelName'      => 'Downloadable',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/downloadables',
+			'params'         => array(),
 		),
 		'query' => array(
 			'modelName'      => 'Downloadable',

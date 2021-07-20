@@ -9,19 +9,19 @@ class Group {
 	public static $path = 'groups';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'Group',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/groups',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'Group',
 			'methodName'     => 'count',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/groups/count',
 			'params'         => array(),
+		),
+		'deleteMetafield' => array(
+			'modelName'      => 'Group',
+			'methodName'     => 'deleteMetafield',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/groups/{groupId}/meta/{field}',
+			'params'         => array('groupId', 'field', ),
 		),
 		'get' => array(
 			'modelName'      => 'Group',
@@ -30,19 +30,19 @@ class Group {
 			'path'           => '/v1/groups/{groupId}',
 			'params'         => array('groupId', ),
 		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Group',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/groups/{groupId}/meta/{field}/push',
-			'params'         => array('groupId', 'field', ),
-		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Group',
 			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/groups/{groupId}/meta/{field}/inc',
 			'params'         => array('groupId', 'field', ),
+		),
+		'list' => array(
+			'modelName'      => 'Group',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/groups',
+			'params'         => array(),
 		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Group',
@@ -51,11 +51,11 @@ class Group {
 			'path'           => '/v1/groups/{groupId}/meta/{field}/pull',
 			'params'         => array('groupId', 'field', ),
 		),
-		'deleteMetafield' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'Group',
-			'methodName'     => 'deleteMetafield',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/groups/{groupId}/meta/{field}',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/groups/{groupId}/meta/{field}/push',
 			'params'         => array('groupId', 'field', ),
 		),
 		'query' => array(

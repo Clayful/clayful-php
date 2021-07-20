@@ -9,13 +9,6 @@ class ShippingPolicy {
 	public static $path = 'shipping/policies';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'ShippingPolicy',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/shipping/policies',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'ShippingPolicy',
 			'methodName'     => 'count',
@@ -29,6 +22,13 @@ class ShippingPolicy {
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/shipping/policies/{shippingPolicyId}',
 			'params'         => array('shippingPolicyId', ),
+		),
+		'list' => array(
+			'modelName'      => 'ShippingPolicy',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/shipping/policies',
+			'params'         => array(),
 		),
 		'query' => array(
 			'modelName'      => 'ShippingPolicy',

@@ -9,13 +9,6 @@ class ShippingMethod {
 	public static $path = 'shipping/methods';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'ShippingMethod',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/shipping/methods',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'ShippingMethod',
 			'methodName'     => 'count',
@@ -29,6 +22,13 @@ class ShippingMethod {
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/shipping/methods/{shippingMethodId}',
 			'params'         => array('shippingMethodId', ),
+		),
+		'list' => array(
+			'modelName'      => 'ShippingMethod',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/shipping/methods',
+			'params'         => array(),
 		),
 		'query' => array(
 			'modelName'      => 'ShippingMethod',

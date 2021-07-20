@@ -9,13 +9,6 @@ class Country {
 	public static $path = 'countries';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'Country',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/countries',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'Country',
 			'methodName'     => 'count',
@@ -29,6 +22,13 @@ class Country {
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/countries/{countryId}',
 			'params'         => array('countryId', ),
+		),
+		'list' => array(
+			'modelName'      => 'Country',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/countries',
+			'params'         => array(),
 		),
 		'query' => array(
 			'modelName'      => 'Country',

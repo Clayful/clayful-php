@@ -9,13 +9,6 @@ class OrderTag {
 	public static $path = 'orders/tags';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'OrderTag',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/orders/tags',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'OrderTag',
 			'methodName'     => 'count',
@@ -29,6 +22,13 @@ class OrderTag {
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/orders/tags/{orderTagId}',
 			'params'         => array('orderTagId', ),
+		),
+		'list' => array(
+			'modelName'      => 'OrderTag',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/orders/tags',
+			'params'         => array(),
 		),
 		'query' => array(
 			'modelName'      => 'OrderTag',

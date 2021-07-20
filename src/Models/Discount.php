@@ -9,19 +9,19 @@ class Discount {
 	public static $path = 'discounts';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'Discount',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/discounts',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'Discount',
 			'methodName'     => 'count',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/discounts/count',
 			'params'         => array(),
+		),
+		'deleteMetafield' => array(
+			'modelName'      => 'Discount',
+			'methodName'     => 'deleteMetafield',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/discounts/{discountId}/meta/{field}',
+			'params'         => array('discountId', 'field', ),
 		),
 		'get' => array(
 			'modelName'      => 'Discount',
@@ -30,19 +30,19 @@ class Discount {
 			'path'           => '/v1/discounts/{discountId}',
 			'params'         => array('discountId', ),
 		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Discount',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/discounts/{discountId}/meta/{field}/push',
-			'params'         => array('discountId', 'field', ),
-		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Discount',
 			'methodName'     => 'increaseMetafield',
 			'httpMethod'     => 'POST',
 			'path'           => '/v1/discounts/{discountId}/meta/{field}/inc',
 			'params'         => array('discountId', 'field', ),
+		),
+		'list' => array(
+			'modelName'      => 'Discount',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/discounts',
+			'params'         => array(),
 		),
 		'pullFromMetafield' => array(
 			'modelName'      => 'Discount',
@@ -51,11 +51,11 @@ class Discount {
 			'path'           => '/v1/discounts/{discountId}/meta/{field}/pull',
 			'params'         => array('discountId', 'field', ),
 		),
-		'deleteMetafield' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'Discount',
-			'methodName'     => 'deleteMetafield',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/discounts/{discountId}/meta/{field}',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/discounts/{discountId}/meta/{field}/push',
 			'params'         => array('discountId', 'field', ),
 		),
 		'query' => array(

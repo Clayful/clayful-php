@@ -9,13 +9,6 @@ class SubscriptionPlan {
 	public static $path = 'subscriptions/plans';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'SubscriptionPlan',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/subscriptions/plans',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'SubscriptionPlan',
 			'methodName'     => 'count',
@@ -29,6 +22,13 @@ class SubscriptionPlan {
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/subscriptions/plans/{subscriptionPlanId}',
 			'params'         => array('subscriptionPlanId', ),
+		),
+		'list' => array(
+			'modelName'      => 'SubscriptionPlan',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/subscriptions/plans',
+			'params'         => array(),
 		),
 		'query' => array(
 			'modelName'      => 'SubscriptionPlan',

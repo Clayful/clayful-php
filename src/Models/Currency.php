@@ -9,13 +9,6 @@ class Currency {
 	public static $path = 'currencies';
 
 	public static $apis = array(
-		'list' => array(
-			'modelName'      => 'Currency',
-			'methodName'     => 'list',
-			'httpMethod'     => 'GET',
-			'path'           => '/v1/currencies',
-			'params'         => array(),
-		),
 		'count' => array(
 			'modelName'      => 'Currency',
 			'methodName'     => 'count',
@@ -29,6 +22,13 @@ class Currency {
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/currencies/{currencyId}',
 			'params'         => array('currencyId', ),
+		),
+		'list' => array(
+			'modelName'      => 'Currency',
+			'methodName'     => 'list',
+			'httpMethod'     => 'GET',
+			'path'           => '/v1/currencies',
+			'params'         => array(),
 		),
 		'query' => array(
 			'modelName'      => 'Currency',

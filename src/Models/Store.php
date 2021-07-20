@@ -9,19 +9,19 @@ class Store {
 	public static $path = 'store';
 
 	public static $apis = array(
+		'deleteMetafield' => array(
+			'modelName'      => 'Store',
+			'methodName'     => 'deleteMetafield',
+			'httpMethod'     => 'DELETE',
+			'path'           => '/v1/store/meta/{field}',
+			'params'         => array('field', ),
+		),
 		'get' => array(
 			'modelName'      => 'Store',
 			'methodName'     => 'get',
 			'httpMethod'     => 'GET',
 			'path'           => '/v1/store',
 			'params'         => array(),
-		),
-		'pushToMetafield' => array(
-			'modelName'      => 'Store',
-			'methodName'     => 'pushToMetafield',
-			'httpMethod'     => 'POST',
-			'path'           => '/v1/store/meta/{field}/push',
-			'params'         => array('field', ),
 		),
 		'increaseMetafield' => array(
 			'modelName'      => 'Store',
@@ -37,11 +37,11 @@ class Store {
 			'path'           => '/v1/store/meta/{field}/pull',
 			'params'         => array('field', ),
 		),
-		'deleteMetafield' => array(
+		'pushToMetafield' => array(
 			'modelName'      => 'Store',
-			'methodName'     => 'deleteMetafield',
-			'httpMethod'     => 'DELETE',
-			'path'           => '/v1/store/meta/{field}',
+			'methodName'     => 'pushToMetafield',
+			'httpMethod'     => 'POST',
+			'path'           => '/v1/store/meta/{field}/push',
 			'params'         => array('field', ),
 		),
 	);
