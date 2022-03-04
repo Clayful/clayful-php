@@ -3,7 +3,10 @@
     "description": "PHP SDK for Clayful API",
     "version": "2.5.0",
     "type": "library",
-    "keywords": ["eCommerce", "clayful"],
+    "keywords": [
+        "eCommerce",
+        "clayful"
+    ],
     "homepage": "https://github.com/Clayful/clayful-php",
     "readme": "./README.md",
     "license": "MIT",
@@ -14,14 +17,30 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0|^7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "5.5.*"
     },
     "autoload": {
         "psr-4": {
-            "Clayful\\": ["src/", "src/Models/"]
+            "Clayful\\": [
+                "src/",
+                "src/Models/"
+            ]
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Clayful\\ServiceProvider"
+            ],
+            "aliases": {
+                "ClayfulFacade": "Clayful\\Facade"
+            },
+            "dont-discover": [
+                "*"
+            ]
         }
     }
 }
